@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -59,12 +60,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Expanded(child: const SizedBox(height: 30)),
+          const Expanded(child: SizedBox(height: 30)),
           Expanded(
             child: ElevatedButton(
               onPressed: () {
                 if (username != "" && age != "") {
-                  MyDB.addRecord(username, age);
+                  MyDB.addFireRecord(username, age);
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -90,6 +91,25 @@ class _HomePageState extends State<HomePage> {
 }
 
 class MyDB {
+
+
+  static void addFireRecord(String name, String age){
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+    users.add({
+        'name': name,
+        'age': age,
+      }).then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
+    }
+
+
+
+
+
+
+
   static void addRecord(String name, String age) async {
     var path = "my_db.db";
 

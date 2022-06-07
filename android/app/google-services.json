@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "330018054509",
+    "project_id": "intro-to-html",
+    "storage_bucket": "intro-to-html.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330018054509:android:526cb9f26bde6912ce3a64",
+        "android_client_info": {
+          "package_name": "com.example.intro_to_html"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330018054509-dg8suu0j414c8e3j7kuuf95jfr3qq4r9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwPRJjkMYIsgCOHNzM5bOlDIxkgn38PxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330018054509-dg8suu0j414c8e3j7kuuf95jfr3qq4r9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

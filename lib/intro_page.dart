@@ -25,7 +25,6 @@ class _IntroPageState extends State<IntroPage> {
           ElevatedButton(
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
-
             },
             style: ElevatedButton.styleFrom(
                 primary: Colors.black, minimumSize: const Size(300, 60)),

@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                   )),
             ),
           ),
-          Expanded(child: const SizedBox(height: 50)),
+          const Expanded(child: SizedBox(height: 50)),
           Expanded(
             child: TextField(
               keyboardType: TextInputType.number,

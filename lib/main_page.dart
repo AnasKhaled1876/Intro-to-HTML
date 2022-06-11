@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intro_to_html/lessons_page.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MainPage extends StatelessWidget {
@@ -29,7 +30,10 @@ class MainPage extends StatelessWidget {
             child: Image.asset("assets/list1.png"),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LessonsPage()));
+            },
             child: Image.asset("assets/list2.png"),
           ),
           GestureDetector(
@@ -49,8 +53,7 @@ class RoadMapPage extends StatelessWidget {
   Widget build(BuildContext context) {
     String videoId;
     videoId = YoutubePlayer.convertUrlToId(
-        "https://www.youtube.com/watch?v=BBAyRBTfsOU")!;
-    print(videoId);
+        "https://www.youtube.com/watch?v=ERXcU_TpIio")!;
     YoutubePlayerController _controller = YoutubePlayerController(
       initialVideoId: videoId,
       flags: const YoutubePlayerFlags(

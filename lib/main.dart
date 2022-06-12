@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:intro_to_html/first_lesson_page.dart';
 import 'package:intro_to_html/home_page.dart';
 import 'package:intro_to_html/intro_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
     Intl.defaultLocale = 'ar';
     return const MaterialApp(
 
-      home: IntroPage(),
+      home: FirstLessonPage(),
     );
   }
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/main_page.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import 'home_page.dart';
 
 class FirstLessonPage extends StatefulWidget {
   const FirstLessonPage({Key? key}) : super(key: key);
@@ -10,7 +13,7 @@ class FirstLessonPage extends StatefulWidget {
 
 class _FirstLessonPageState extends State<FirstLessonPage> {
   String answer1 = "", answer2 = "";
-  bool finished = false;
+  bool finished = false, next=false;
 
   @override
   Widget build(BuildContext context) {
@@ -198,4 +201,59 @@ class MatchItem extends StatelessWidget {
   }
 
   MatchItem(this.item, {Key? key}) : super(key: key);
+}
+
+
+class Lesson extends StatelessWidget {
+  const Lesson({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    String videoId;
+    videoId = YoutubePlayer.convertUrlToId(
+        "https://www.youtube.com/watch?v=ERXcU_TpIio")!;
+    YoutubePlayerController _controller = YoutubePlayerController(
+      initialVideoId: videoId,
+      flags: const YoutubePlayerFlags(
+        autoPlay: true,
+        mute: true,
+      ),
+    );
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.deepOrangeAccent,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
+        title: const Text("خريطة السير"),
+      ),
+      body: Column(
+        children: [
+          Center(
+            child: YoutubePlayer(
+              controller: _controller,
+              showVideoProgressIndicator: true,
+              progressIndicatorColor: Colors.red,
+            ),
+          ),
+          const SizedBox(height: 60,),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const FirstLessonPage()));
+            },
+            style: ElevatedButton.styleFrom(
+                primary: Colors.black, minimumSize: const Size(300, 60)),
+            child: const Text(
+              "النشاط",
+              style: TextStyle(fontSize: 20),
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }

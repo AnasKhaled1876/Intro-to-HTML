@@ -9,7 +9,8 @@ class FirstLessonPage extends StatefulWidget {
 }
 
 class _FirstLessonPageState extends State<FirstLessonPage> {
-  String answer = "";
+  String answer1 = "", answer2 = "";
+  bool finished = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +46,55 @@ class _FirstLessonPageState extends State<FirstLessonPage> {
               Column(
                 children: <Widget>[
                   DragTarget<String>(
-                    onAccept: (data) => setState(() => answer = data),
+                    onAccept: (data) => setState(() async{
+                      answer2 = data;
+                      if (answer1 == "HTML" && answer2 == "هيكلة") {
+                        finished = true;
+                        await Future.delayed(const Duration(seconds: 2));
+                      }
+                    }),
                     builder: (context, _, __) => SizedBox(
                       width: 70,
                       height: 40,
                       child: Text(
-                        answer,
+                        answer2,
+                        style: const TextStyle(fontSize: 23.0),
+                      ),
+                    ),
+                  ),
+                  const Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "..................",
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ),
+                ],
+              ),
+              const Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  "في تصميم",
+                  textAlign: TextAlign.right,
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(fontSize: 23.0),
+                ),
+              ),
+              Column(
+                children: <Widget>[
+                  DragTarget<String>(
+                    onAccept: (data) => setState(() async{
+                      answer1 = data;
+                      if (answer1 == "HTML" && answer2 == "هيكلة") {
+                        finished = true;
+                        await Future.delayed(const Duration(seconds: 2));
+                      }
+                    }),
+                    builder: (context, _, __) => SizedBox(
+                      width: 70,
+                      height: 40,
+                      child: Text(
+                        answer1,
                         style: const TextStyle(fontSize: 25.0),
                       ),
                     ),
@@ -69,25 +113,49 @@ class _FirstLessonPageState extends State<FirstLessonPage> {
                   "تستخدم لغة ",
                   textAlign: TextAlign.right,
                   textDirection: TextDirection.rtl,
-                  style: TextStyle(fontSize: 26.0),
+                  style: TextStyle(fontSize: 25.0),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 50),
+          const SizedBox(
+            height: 20,
+          ),
+          const Align(
+            alignment: Alignment.bottomRight,
+            child: Text(
+              "المواقع الالكترونية",
+              style: TextStyle(fontSize: 23.0),
+            ),
+          ),
+          const SizedBox(height: 150),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const <Widget>[
               DraggableItem(item: "CSS"),
+              SizedBox(width: 30.0),
               DraggableItem(item: "HTML"),
             ],
+          ),
+          const SizedBox(
+            height: 30.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const <Widget>[
               DraggableItem(item: "تنسيق"),
+              SizedBox(width: 30.0),
               DraggableItem(item: "هيكلة"),
             ],
+          ),
+          const SizedBox(height: 60.0),
+          if(finished)
+          const Center(
+            child: Icon(
+              Icons.check_circle,
+              size: 50,
+              color: Colors.green,
+            ),
           )
         ],
       ),

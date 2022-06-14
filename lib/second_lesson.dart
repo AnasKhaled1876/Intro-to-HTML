@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'first_lesson_page.dart';
 import 'home_page.dart';
 
 class LessonTwoStudy extends StatefulWidget {
@@ -28,7 +29,7 @@ class _LessonTwoStudyState extends State<LessonTwoStudy> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           const SizedBox(
-            height: 30,
+            height: 70,
           ),
           const Align(
             alignment: Alignment.centerRight,
@@ -78,8 +79,45 @@ class LessonTwoActivity extends StatefulWidget {
 }
 
 class _LessonTwoActivityState extends State<LessonTwoActivity> {
-  List<String> headings = ["H1", "H2", "H3", "H4", "H5", "H6"];
-  List<String> inputs = ["", "", "", "", "", ""];
+  List<String> headings = ["1", "2", "3", "4", "5", "6", "7", "8"];
+  List<String> headingsNo = [
+    "<HTML>",
+    "<head>",
+    "<title>",
+    "</title>",
+    "</head>",
+    "<body>",
+    "</body>",
+    "</HTML>"
+  ];
+  List<String> inputs = ["", "", "", "", "", "", "", ""];
+  bool finished = false;
+
+  bool check() {
+    for (int i = 0; i < headingsNo.length; i++) {
+      if (inputs[i] != headingsNo[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  List<Widget> fillRows() {
+    List<Widget> myChoices = [];
+    for (int i = 0; i < headingsNo.length; i += 2) {
+      myChoices.add(
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            DraggableItem(item: headingsNo[i]),
+            const SizedBox(width: 30.0),
+            DraggableItem(item: headingsNo[i + 1]),
+          ],
+        ),
+      );
+    }
+    return myChoices;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,130 +133,207 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
         ),
         title: const Text("الدرس الثاني"),
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Row(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            color: Colors.blue.withOpacity(0.3),
+            width: 195,
+            child: Column(
               children: <Widget>[
-                HeadingsBox(headings[0]),
-                DragTarget<String>(
-                  onAccept: (data) => setState(() async {
-                    inputs[0] = data;
-                    await Future.delayed(const Duration(seconds: 2));
-                  }),
-                  builder: (context, _, __) => Container(
-                    width: 70,
-                    height: 40,
-                    color: Colors.amber,
-                    child: Text(
-                      inputs[0],
-                      style: const TextStyle(fontSize: 23.0),
+                Row(
+                  children: <Widget>[
+                    HeadingsBox(headings[0]),
+                    const SizedBox(width: 30,),
+                    DragTarget<String>(
+                      onAccept: (data) => setState(() {
+                        inputs[0] = data;
+                        if (check()) {
+                          finished = true;
+                        }
+                      }),
+                      builder: (context, _, __) => Container(
+                        width: 90,
+                        height: 40,
+                        child: Text(
+                          inputs[0],
+                          style: const TextStyle(fontSize: 20.0),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    HeadingsBox(headings[1]),
+                    const SizedBox(width: 30,),
+                    DragTarget<String>(
+                      onAccept: (data) => setState(() {
+                        inputs[1] = data;
+                        if (check()) {
+                          finished = true;
+                        }
+                      }),
+                      builder: (context, _, __) => Container(
+                        width: 90,
+                        height: 40,
+                        child: Text(
+                          inputs[1],
+                          style: const TextStyle(fontSize: 20.0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    HeadingsBox(headings[2]),
+                    const SizedBox(width: 30,),
+                    DragTarget<String>(
+                      onAccept: (data) => setState(() {
+                        inputs[2] = data;
+                        if (check()) {
+                          finished = true;
+                        }
+                      }),
+                      builder: (context, _, __) => Container(
+                        width: 90,
+                        height: 40,
+                        child: Text(
+                          inputs[2],
+                          style: const TextStyle(fontSize: 20.0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    HeadingsBox(headings[3]),
+                    const SizedBox(width: 30,),
+                    DragTarget<String>(
+                      onAccept: (data) => setState(() {
+                        inputs[3] = data;
+                        if (check()) {
+                          finished = true;
+                        }
+                      }),
+                      builder: (context, _, __) => Container(
+                        width: 90,
+                        height: 40,
+                        child: Text(
+                          inputs[3],
+                          style: const TextStyle(fontSize: 20.0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    HeadingsBox(headings[4]),
+                    const SizedBox(width: 30,),
+                    DragTarget<String>(
+                      onAccept: (data) => setState(() {
+                        inputs[4] = data;
+                        if (check()) {
+                          finished = true;
+                        }
+                      }),
+                      builder: (context, _, __) => Container(
+                        width: 90,
+                        height: 40,
+                        child: Text(
+                          inputs[4],
+                          style: const TextStyle(fontSize: 20.0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    HeadingsBox(headings[5]),
+                    const SizedBox(width: 30,),
+                    DragTarget<String>(
+                      onAccept: (data) => setState(() {
+                        inputs[5] = data;
+                        if (check()) {
+                          finished = true;
+                        }
+                      }),
+                      builder: (context, _, __) => Container(
+                        width: 90,
+                        height: 40,
+                        child: Text(
+                          inputs[5],
+                          style: const TextStyle(fontSize: 20.0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    HeadingsBox(headings[6]),
+                    const SizedBox(width: 30,),
+                    DragTarget<String>(
+                      onAccept: (data) => setState(() {
+                        inputs[6] = data;
+                        if (check()) {
+                          finished = true;
+                        }
+                      }),
+                      builder: (context, _, __) => Container(
+                        width: 90,
+                        height: 40,
+                        child: Text(
+                          inputs[6],
+                          style: const TextStyle(fontSize: 20.0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    HeadingsBox(headings[7]),
+                    const SizedBox(width: 30,),
+                    DragTarget<String>(
+                      onAccept: (data) => setState(() {
+                        inputs[7] = data;
+                        if (check()) {
+                          finished = true;
+                        }
+                      }),
+                      builder: (context, _, __) => Container(
+                        width: 90,
+                        height: 40,
+                        child: Text(
+                          inputs[7],
+                          style: const TextStyle(fontSize: 20.0),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-            Row(
-              children: <Widget>[
-                HeadingsBox(headings[1]),
-                DragTarget<String>(
-                  onAccept: (data) => setState(() async {
-                    inputs[1] = data;
-                    await Future.delayed(const Duration(seconds: 2));
-                  }),
-                  builder: (context, _, __) => Container(
-                    width: 70,
-                    height: 40,
-                    color: Colors.amber,
-                    child: Text(
-                      inputs[1],
-                      style: const TextStyle(fontSize: 23.0),
-                    ),
-                  ),
-                ),
-              ],
+          ),
+          const SizedBox(height: 30,),
+          Column(
+            children: fillRows(),
+          ),
+          const SizedBox(height: 60.0),
+          if (finished)
+            const Center(
+              child: Icon(
+                Icons.check_circle,
+                size: 50,
+                color: Colors.green,
+              ),
             ),
-            Row(
-              children: <Widget>[
-                HeadingsBox(headings[2]),
-                DragTarget<String>(
-                  onAccept: (data) => setState(() async {
-                    inputs[2] = data;
-                    await Future.delayed(const Duration(seconds: 2));
-                  }),
-                  builder: (context, _, __) => Container(
-                    width: 70,
-                    height: 40,
-                    color: Colors.amber,
-                    child: Text(
-                      inputs[2],
-                      style: const TextStyle(fontSize: 23.0),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                HeadingsBox(headings[3]),
-                DragTarget<String>(
-                  onAccept: (data) => setState(() async {
-                    inputs[3] = data;
-                    await Future.delayed(const Duration(seconds: 2));
-                  }),
-                  builder: (context, _, __) => Container(
-                    width: 70,
-                    height: 40,
-                    color: Colors.amber,
-                    child: Text(
-                      inputs[3],
-                      style: const TextStyle(fontSize: 23.0),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                HeadingsBox(headings[4]),
-                DragTarget<String>(
-                  onAccept: (data) => setState(() async {
-                    inputs[4] = data;
-                    await Future.delayed(const Duration(seconds: 2));
-                  }),
-                  builder: (context, _, __) => Container(
-                    width: 70,
-                    height: 40,
-                    color: Colors.amber,
-                    child: Text(
-                      inputs[4],
-                      style: const TextStyle(fontSize: 23.0),
-                    ),
-                  ),
-                ),
-              ],
-            ),Row(
-              children: <Widget>[
-                HeadingsBox(headings[5]),
-                DragTarget<String>(
-                  onAccept: (data) => setState(() async {
-                    inputs[5] = data;
-                    await Future.delayed(const Duration(seconds: 2));
-                  }),
-                  builder: (context, _, __) => Container(
-                    width: 70,
-                    height: 40,
-                    color: Colors.amber,
-                    child: Text(
-                      inputs[5],
-                      style: const TextStyle(fontSize: 23.0),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+        ],
       ),
     );
   }
@@ -227,18 +342,27 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
 class HeadingsBox extends StatelessWidget {
   final String heading;
 
-   const HeadingsBox(this.heading, {Key? key}) : super(key: key);
+  const HeadingsBox(this.heading, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 40,
-      color: Colors.blueGrey,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black,
+        ),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(9),
+        ),
+      ),
+      width: 70,
       height: 40,
-      child: Text(
-        heading,
-        style: const TextStyle(
-          fontSize: 30.0,
+      child: Center(
+        child: Text(
+          heading,
+          style: const TextStyle(
+            fontSize: 27.0,
+          ),
         ),
       ),
     );

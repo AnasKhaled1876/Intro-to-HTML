@@ -195,7 +195,7 @@ class MatchItem extends StatelessWidget {
           child: Text(
         item,
         style: const TextStyle(
-            decoration: TextDecoration.none, color: Colors.amber),
+            fontSize: 20.0,decoration: TextDecoration.none, color: Colors.amber),
       )),
     );
   }

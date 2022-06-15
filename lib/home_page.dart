@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                           builder: (context) => const MainPage()));
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text("من فضلك ادخل اسمك وعمرك"),
+                    content: Text("من فضلك ادخل اسمك وعمرك",textDirection: TextDirection.rtl,),
                   ));
                 }
               },

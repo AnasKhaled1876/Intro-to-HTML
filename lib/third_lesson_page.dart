@@ -18,38 +18,41 @@ class LessonThreeStudy extends StatelessWidget {
         ),
         title: const Text("الدرس الثالث"),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              "انواع أكواد HTML",
-              textDirection: TextDirection.rtl,
-              style: TextStyle(
-                  color: Colors.red[900],
-                  fontSize: 25.0,
-                  decoration: TextDecoration.underline),
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "انواع أكواد HTML",
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                    color: Colors.red[900],
+                    fontSize: 25.0,
+                    decoration: TextDecoration.underline),
+              ),
             ),
-          ),
-          Center(
-            child: Image.asset("assets/lesson3.png"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const LessonThreeActivity()));
-            },
-            style: ElevatedButton.styleFrom(
-                primary: Colors.black, minimumSize: const Size(300, 60)),
-            child: const Text(
-              "النشاط",
-              style: TextStyle(fontSize: 20),
+            Center(
+              child: Image.asset("assets/lesson3.png"),
             ),
-          )
-        ],
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LessonThreeActivity()));
+              },
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black, minimumSize: const Size(300, 60)),
+              child: const Text(
+                "النشاط",
+                style: TextStyle(fontSize: 20),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -119,34 +122,110 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
         ),
         title: const Text("النشاط"),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          const SizedBox(
-            height: 40,
-          ),
-          const Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              "أمامك مجموعة من المربعات الفارغة انظري اسفل الاحجية ستجدين مجموعة من الاكواد قومي بترتيبها بطريقة السحب والافلات.",
-              textDirection: TextDirection.rtl,
-              style: TextStyle(fontSize: 21.0, fontWeight: FontWeight.bold),
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(
+              height: 40,
             ),
-          ),
-          const SizedBox(
-            height: 45,
-          ),
-          Center(
-            child: Row(
+            const Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "أمامك مجموعة من المربعات الفارغة انظري اسفل الاحجية ستجدين مجموعة من الاكواد قومي بترتيبها بطريقة السحب والافلات.",
+                textDirection: TextDirection.rtl,
+                style: TextStyle(fontSize: 21.0, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(
+              height: 45,
+            ),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Container(
+                    color: Colors.black,
+                    width: 30,
+                    height: 50,
+                    child: const Center(
+                      child: Text(
+                        "1",
+                        style: TextStyle(
+                            fontSize: 20.0,
+                            decoration: TextDecoration.none,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  DragTarget<String>(
+                    onAccept: (data) => setState(() {
+                      inputs[0] = data;
+                      if (check()) {
+                        finished = true;
+                      }
+                    }),
+                    builder: (context, _, __) => Container(
+                      color: Colors.black.withOpacity(0.7),
+                      width: 100,
+                      height: 50,
+                      child: Text(
+                        inputs[0],
+                        style: const TextStyle(fontSize: 20.0),
+                      ),
+                    ),
+                  ),
+                  DragTarget<String>(
+                    onAccept: (data) => setState(() {
+                      inputs[1] = data;
+                      if (check()) {
+                        finished = true;
+                      }
+                    }),
+                    builder: (context, _, __) => Container(
+                      color: Colors.black.withOpacity(0.7),
+                      width: 100,
+                      height: 50,
+                      child: Text(
+                        inputs[1],
+                        style: const TextStyle(fontSize: 20.0),
+                      ),
+                    ),
+                  ),
+                  DragTarget<String>(
+                    onAccept: (data) => setState(() {
+                      inputs[2] = data;
+                      if (check()) {
+                        finished = true;
+                      }
+                    }),
+                    builder: (context, _, __) => Container(
+                      color: Colors.black.withOpacity(0.7),
+                      width: 100,
+                      height: 50,
+                      child: Text(
+                        inputs[2],
+                        style: const TextStyle(fontSize: 20.0),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Container(
-                  color: Colors.black,
+                  color: Colors.red,
                   width: 30,
                   height: 50,
                   child: const Center(
                     child: Text(
-                      "1",
+                      "2",
                       style: TextStyle(
                           fontSize: 20.0,
                           decoration: TextDecoration.none,
@@ -156,160 +235,87 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                 ),
                 DragTarget<String>(
                   onAccept: (data) => setState(() {
-                    inputs[0] = data;
+                    inputs[3] = data;
                     if (check()) {
                       finished = true;
                     }
                   }),
                   builder: (context, _, __) => Container(
-                    color: Colors.black.withOpacity(0.7),
+                    color: Colors.red.withOpacity(0.7),
                     width: 100,
                     height: 50,
                     child: Text(
-                      inputs[0],
+                      inputs[3],
                       style: const TextStyle(fontSize: 20.0),
                     ),
                   ),
                 ),
                 DragTarget<String>(
                   onAccept: (data) => setState(() {
-                    inputs[1] = data;
+                    inputs[4] = data;
                     if (check()) {
                       finished = true;
                     }
                   }),
                   builder: (context, _, __) => Container(
-                    color: Colors.black.withOpacity(0.7),
+                    color: Colors.red.withOpacity(0.7),
                     width: 100,
                     height: 50,
                     child: Text(
-                      inputs[1],
+                      inputs[4],
                       style: const TextStyle(fontSize: 20.0),
                     ),
                   ),
                 ),
                 DragTarget<String>(
                   onAccept: (data) => setState(() {
-                    inputs[2] = data;
+                    inputs[5] = data;
                     if (check()) {
                       finished = true;
                     }
                   }),
                   builder: (context, _, __) => Container(
-                    color: Colors.black.withOpacity(0.7),
+                    color: Colors.red.withOpacity(0.7),
                     width: 100,
                     height: 50,
                     child: Text(
-                      inputs[2],
+                      inputs[5],
                       style: const TextStyle(fontSize: 20.0),
                     ),
                   ),
                 ),
               ],
             ),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Container(
-                color: Colors.red,
-                width: 30,
-                height: 50,
-                child: const Center(
-                  child: Text(
-                    "2",
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        decoration: TextDecoration.none,
-                        color: Colors.white),
-                  ),
-                ),
-              ),
-              DragTarget<String>(
-                onAccept: (data) => setState(() {
-                  inputs[3] = data;
-                  if (check()) {
-                    finished = true;
-                  }
-                }),
-                builder: (context, _, __) => Container(
-                  color: Colors.red.withOpacity(0.7),
-                  width: 100,
-                  height: 50,
-                  child: Text(
-                    inputs[3],
-                    style: const TextStyle(fontSize: 20.0),
-                  ),
-                ),
-              ),
-              DragTarget<String>(
-                onAccept: (data) => setState(() {
-                  inputs[4] = data;
-                  if (check()) {
-                    finished = true;
-                  }
-                }),
-                builder: (context, _, __) => Container(
-                  color: Colors.red.withOpacity(0.7),
-                  width: 100,
-                  height: 50,
-                  child: Text(
-                    inputs[4],
-                    style: const TextStyle(fontSize: 20.0),
-                  ),
-                ),
-              ),
-              DragTarget<String>(
-                onAccept: (data) => setState(() {
-                  inputs[5] = data;
-                  if (check()) {
-                    finished = true;
-                  }
-                }),
-                builder: (context, _, __) => Container(
-                  color: Colors.red.withOpacity(0.7),
-                  width: 100,
-                  height: 50,
-                  child: Text(
-                    inputs[5],
-                    style: const TextStyle(fontSize: 20.0),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          Column(crossAxisAlignment: CrossAxisAlignment.center,
-            children: fillRows(),
-          ),
-          const SizedBox(height: 20.0),
-          if (finished)
-            const Center(
-              child: Icon(
-                Icons.check_circle,
-                size: 50,
-                color: Colors.green,
-              ),
+            const SizedBox(
+              height: 50,
             ),
-          if (finished)
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const LessonThreeStudy()));
-              },
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.black, minimumSize: const Size(300, 40)),
-              child: const Text(
-                "التالي",
-                style: TextStyle(fontSize: 20),
-              ),
+            Column(crossAxisAlignment: CrossAxisAlignment.center,
+              children: fillRows(),
             ),
-        ],
+            const SizedBox(height: 20.0),
+            if (finished)
+              const Center(
+                child: Icon(
+                  Icons.check_circle,
+                  size: 50,
+                  color: Colors.green,
+                ),
+              ),
+            if (finished)
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const LessonThreeStudy()));
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.black, minimumSize: const Size(300, 40)),
+                child: const Text(
+                  "التالي",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

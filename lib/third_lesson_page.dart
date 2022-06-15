@@ -86,6 +86,9 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
   List<Widget> fillRows() {
     List<Widget> myChoices = [];
     for (int i = 0; i < headings.length; i += 3) {
+      if(i==3) {
+        myChoices.add(const SizedBox(height: 20,));
+      }
       myChoices.add(
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -114,7 +117,7 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
           },
           icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("الدرس الثاني"),
+        title: const Text("النشاط"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -283,7 +286,29 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
           ),
           Column(crossAxisAlignment: CrossAxisAlignment.center,
             children: fillRows(),
-          )
+          ),
+          const SizedBox(height: 20.0),
+          if (finished)
+            const Center(
+              child: Icon(
+                Icons.check_circle,
+                size: 50,
+                color: Colors.green,
+              ),
+            ),
+          if (finished)
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LessonThreeStudy()));
+              },
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black, minimumSize: const Size(300, 40)),
+              child: const Text(
+                "التالي",
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
         ],
       ),
     );

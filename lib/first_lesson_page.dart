@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/main_page.dart';
+import 'package:intro_to_html/second_lesson.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import 'home_page.dart';
@@ -13,7 +14,7 @@ class FirstLessonPage extends StatefulWidget {
 
 class _FirstLessonPageState extends State<FirstLessonPage> {
   String answer1 = "", answer2 = "";
-  bool finished = false, next=false;
+  bool finished = false, next = false;
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +34,16 @@ class _FirstLessonPageState extends State<FirstLessonPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Align(
+          Align(
             alignment: Alignment.centerRight,
             child: Text(
               "تعريف لغة HTML:",
               textAlign: TextAlign.center,
               textDirection: TextDirection.rtl,
               style: TextStyle(
-                  decoration: TextDecoration.underline, fontSize: 30.0),
+                  decoration: TextDecoration.underline,
+                  fontSize: 30.0,
+                  color: Colors.red[900]),
             ),
           ),
           Row(
@@ -49,11 +52,10 @@ class _FirstLessonPageState extends State<FirstLessonPage> {
               Column(
                 children: <Widget>[
                   DragTarget<String>(
-                    onAccept: (data) => setState(() async{
+                    onAccept: (data) => setState(() {
                       answer2 = data;
                       if (answer1 == "HTML" && answer2 == "هيكلة") {
                         finished = true;
-                        await Future.delayed(const Duration(seconds: 2));
                       }
                     }),
                     builder: (context, _, __) => SizedBox(
@@ -69,28 +71,27 @@ class _FirstLessonPageState extends State<FirstLessonPage> {
                     alignment: Alignment.centerRight,
                     child: Text(
                       "..................",
-                      style: TextStyle(fontSize: 20.0),
+                      style: TextStyle(fontSize: 20.0, color: Colors.red),
                     ),
                   ),
                 ],
               ),
-              const Align(
+              Align(
                 alignment: Alignment.centerRight,
                 child: Text(
                   "في تصميم",
                   textAlign: TextAlign.right,
                   textDirection: TextDirection.rtl,
-                  style: TextStyle(fontSize: 23.0),
+                  style: TextStyle(fontSize: 23.0, color: Colors.red[900]),
                 ),
               ),
               Column(
                 children: <Widget>[
                   DragTarget<String>(
-                    onAccept: (data) => setState(() async{
+                    onAccept: (data) => setState(() {
                       answer1 = data;
                       if (answer1 == "HTML" && answer2 == "هيكلة") {
                         finished = true;
-                        await Future.delayed(const Duration(seconds: 2));
                       }
                     }),
                     builder: (context, _, __) => SizedBox(
@@ -102,21 +103,22 @@ class _FirstLessonPageState extends State<FirstLessonPage> {
                       ),
                     ),
                   ),
-                  const Align(
+                  Align(
                       alignment: Alignment.centerRight,
                       child: Text(
                         "..................",
-                        style: TextStyle(fontSize: 20.0),
+                        style:
+                            TextStyle(fontSize: 20.0, color: Colors.red[900]),
                       )),
                 ],
               ),
-              const Align(
+              Align(
                 alignment: Alignment.centerRight,
                 child: Text(
                   "تستخدم لغة ",
                   textAlign: TextAlign.right,
                   textDirection: TextDirection.rtl,
-                  style: TextStyle(fontSize: 25.0),
+                  style: TextStyle(fontSize: 25.0, color: Colors.red[900]),
                 ),
               ),
             ],
@@ -124,11 +126,11 @@ class _FirstLessonPageState extends State<FirstLessonPage> {
           const SizedBox(
             height: 20,
           ),
-          const Align(
+          Align(
             alignment: Alignment.bottomRight,
             child: Text(
               "المواقع الالكترونية",
-              style: TextStyle(fontSize: 23.0),
+              style: TextStyle(fontSize: 23.0, color: Colors.red[900]),
             ),
           ),
           const SizedBox(height: 150),
@@ -152,14 +154,34 @@ class _FirstLessonPageState extends State<FirstLessonPage> {
             ],
           ),
           const SizedBox(height: 60.0),
-          if(finished)
-          const Center(
-            child: Icon(
-              Icons.check_circle,
-              size: 50,
-              color: Colors.green,
+          if (finished)
+            const Center(
+              child: Icon(
+                Icons.check_circle,
+                size: 50,
+                color: Colors.green,
+              ),
             ),
-          )
+          const SizedBox(
+            height: 20,
+          ),
+          if (finished)
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LessonTwoStudy()));
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.black, minimumSize: const Size(300, 60)),
+                child: const Text(
+                  "التالي",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            )
         ],
       ),
     );
@@ -190,19 +212,20 @@ class MatchItem extends StatelessWidget {
     return Container(
       color: Colors.blueGrey,
       width: 100,
-      height: 50,
+      height: 45,
       child: Center(
           child: Text(
         item,
         style: const TextStyle(
-            fontSize: 20.0,decoration: TextDecoration.none, color: Colors.amber),
+            fontSize: 20.0,
+            decoration: TextDecoration.none,
+            color: Colors.white),
       )),
     );
   }
 
   MatchItem(this.item, {Key? key}) : super(key: key);
 }
-
 
 class Lesson extends StatelessWidget {
   const Lesson({Key? key}) : super(key: key);
@@ -240,10 +263,15 @@ class Lesson extends StatelessWidget {
               progressIndicatorColor: Colors.red,
             ),
           ),
-          const SizedBox(height: 60,),
+          const SizedBox(
+            height: 60,
+          ),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const FirstLessonPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const FirstLessonPage()));
             },
             style: ElevatedButton.styleFrom(
                 primary: Colors.black, minimumSize: const Size(300, 60)),

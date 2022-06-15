@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intro_to_html/third_lesson_page.dart';
 
 import 'first_lesson_page.dart';
 import 'home_page.dart';
@@ -25,47 +26,50 @@ class _LessonTwoStudyState extends State<LessonTwoStudy> {
         ),
         title: const Text("الدرس الثاني"),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          const SizedBox(
-            height: 70,
-          ),
-          const Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              "ما هو شكل صفحة الHTML",
-              style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  fontSize: 26.0,
-                  color: Colors.redAccent),
-              textDirection: TextDirection.rtl,
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            const SizedBox(
+              height: 70,
             ),
-          ),
-          Center(
-            child: SizedBox(
-              width: 350,
-              height: 300,
-              child: Image.asset("assets/lesson2.png"),
-            ),
-          ),
-          Center(
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const LessonTwoActivity()));
-              },
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.black, minimumSize: const Size(300, 60)),
-              child: const Text(
-                "النشاط",
-                style: TextStyle(fontSize: 24),
+            const Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "ما هو شكل صفحة الHTML",
+                style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    fontSize: 26.0,
+                    color: Colors.redAccent),
+                textDirection: TextDirection.rtl,
               ),
             ),
-          )
-        ],
+            Center(
+              child: SizedBox(
+                width: 350,
+                height: 300,
+                child: Image.asset("assets/lesson2.png"),
+              ),
+            ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LessonTwoActivity()));
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.black, minimumSize: const Size(300, 60)),
+                child: const Text(
+                  "النشاط",
+                  style: TextStyle(fontSize: 24),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -131,209 +135,243 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
           },
           icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("الدرس الثاني"),
+        title: const Text("النشاط"),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            color: Colors.blue.withOpacity(0.3),
-            width: 195,
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    HeadingsBox(headings[0]),
-                    const SizedBox(width: 30,),
-                    DragTarget<String>(
-                      onAccept: (data) => setState(() {
-                        inputs[0] = data;
-                        if (check()) {
-                          finished = true;
-                        }
-                      }),
-                      builder: (context, _, __) => Container(
-                        width: 90,
-                        height: 40,
-                        child: Text(
-                          inputs[0],
-                          style: const TextStyle(fontSize: 20.0),
+      body: Container(
+        margin: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              color: Colors.blue.withOpacity(0.3),
+              width: 195,
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      HeadingsBox(headings[0]),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      DragTarget<String>(
+                        onAccept: (data) => setState(() {
+                          inputs[0] = data;
+                          if (check()) {
+                            finished = true;
+                          }
+                        }),
+                        builder: (context, _, __) => Container(
+                          width: 90,
+                          height: 40,
+                          child: Text(
+                            inputs[0],
+                            style: const TextStyle(fontSize: 20.0),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    HeadingsBox(headings[1]),
-                    const SizedBox(width: 30,),
-                    DragTarget<String>(
-                      onAccept: (data) => setState(() {
-                        inputs[1] = data;
-                        if (check()) {
-                          finished = true;
-                        }
-                      }),
-                      builder: (context, _, __) => Container(
-                        width: 90,
-                        height: 40,
-                        child: Text(
-                          inputs[1],
-                          style: const TextStyle(fontSize: 20.0),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      HeadingsBox(headings[1]),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      DragTarget<String>(
+                        onAccept: (data) => setState(() {
+                          inputs[1] = data;
+                          if (check()) {
+                            finished = true;
+                          }
+                        }),
+                        builder: (context, _, __) => Container(
+                          width: 90,
+                          height: 40,
+                          child: Text(
+                            inputs[1],
+                            style: const TextStyle(fontSize: 20.0),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    HeadingsBox(headings[2]),
-                    const SizedBox(width: 30,),
-                    DragTarget<String>(
-                      onAccept: (data) => setState(() {
-                        inputs[2] = data;
-                        if (check()) {
-                          finished = true;
-                        }
-                      }),
-                      builder: (context, _, __) => Container(
-                        width: 90,
-                        height: 40,
-                        child: Text(
-                          inputs[2],
-                          style: const TextStyle(fontSize: 20.0),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      HeadingsBox(headings[2]),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      DragTarget<String>(
+                        onAccept: (data) => setState(() {
+                          inputs[2] = data;
+                          if (check()) {
+                            finished = true;
+                          }
+                        }),
+                        builder: (context, _, __) => Container(
+                          width: 90,
+                          height: 40,
+                          child: Text(
+                            inputs[2],
+                            style: const TextStyle(fontSize: 20.0),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    HeadingsBox(headings[3]),
-                    const SizedBox(width: 30,),
-                    DragTarget<String>(
-                      onAccept: (data) => setState(() {
-                        inputs[3] = data;
-                        if (check()) {
-                          finished = true;
-                        }
-                      }),
-                      builder: (context, _, __) => Container(
-                        width: 90,
-                        height: 40,
-                        child: Text(
-                          inputs[3],
-                          style: const TextStyle(fontSize: 20.0),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      HeadingsBox(headings[3]),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      DragTarget<String>(
+                        onAccept: (data) => setState(() {
+                          inputs[3] = data;
+                          if (check()) {
+                            finished = true;
+                          }
+                        }),
+                        builder: (context, _, __) => Container(
+                          width: 90,
+                          height: 40,
+                          child: Text(
+                            inputs[3],
+                            style: const TextStyle(fontSize: 20.0),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    HeadingsBox(headings[4]),
-                    const SizedBox(width: 30,),
-                    DragTarget<String>(
-                      onAccept: (data) => setState(() {
-                        inputs[4] = data;
-                        if (check()) {
-                          finished = true;
-                        }
-                      }),
-                      builder: (context, _, __) => Container(
-                        width: 90,
-                        height: 40,
-                        child: Text(
-                          inputs[4],
-                          style: const TextStyle(fontSize: 20.0),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      HeadingsBox(headings[4]),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      DragTarget<String>(
+                        onAccept: (data) => setState(() {
+                          inputs[4] = data;
+                          if (check()) {
+                            finished = true;
+                          }
+                        }),
+                        builder: (context, _, __) => Container(
+                          width: 90,
+                          height: 40,
+                          child: Text(
+                            inputs[4],
+                            style: const TextStyle(fontSize: 20.0),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    HeadingsBox(headings[5]),
-                    const SizedBox(width: 30,),
-                    DragTarget<String>(
-                      onAccept: (data) => setState(() {
-                        inputs[5] = data;
-                        if (check()) {
-                          finished = true;
-                        }
-                      }),
-                      builder: (context, _, __) => Container(
-                        width: 90,
-                        height: 40,
-                        child: Text(
-                          inputs[5],
-                          style: const TextStyle(fontSize: 20.0),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      HeadingsBox(headings[5]),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      DragTarget<String>(
+                        onAccept: (data) => setState(() {
+                          inputs[5] = data;
+                          if (check()) {
+                            finished = true;
+                          }
+                        }),
+                        builder: (context, _, __) => Container(
+                          width: 90,
+                          height: 40,
+                          child: Text(
+                            inputs[5],
+                            style: const TextStyle(fontSize: 20.0),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    HeadingsBox(headings[6]),
-                    const SizedBox(width: 30,),
-                    DragTarget<String>(
-                      onAccept: (data) => setState(() {
-                        inputs[6] = data;
-                        if (check()) {
-                          finished = true;
-                        }
-                      }),
-                      builder: (context, _, __) => Container(
-                        width: 90,
-                        height: 40,
-                        child: Text(
-                          inputs[6],
-                          style: const TextStyle(fontSize: 20.0),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      HeadingsBox(headings[6]),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      DragTarget<String>(
+                        onAccept: (data) => setState(() {
+                          inputs[6] = data;
+                          if (check()) {
+                            finished = true;
+                          }
+                        }),
+                        builder: (context, _, __) => Container(
+                          width: 90,
+                          height: 40,
+                          child: Text(
+                            inputs[6],
+                            style: const TextStyle(fontSize: 20.0),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    HeadingsBox(headings[7]),
-                    const SizedBox(width: 30,),
-                    DragTarget<String>(
-                      onAccept: (data) => setState(() {
-                        inputs[7] = data;
-                        if (check()) {
-                          finished = true;
-                        }
-                      }),
-                      builder: (context, _, __) => Container(
-                        width: 90,
-                        height: 40,
-                        child: Text(
-                          inputs[7],
-                          style: const TextStyle(fontSize: 20.0),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      HeadingsBox(headings[7]),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      DragTarget<String>(
+                        onAccept: (data) => setState(() {
+                          inputs[7] = data;
+                          if (check()) {
+                            finished = true;
+                          }
+                        }),
+                        builder: (context, _, __) => Container(
+                          width: 90,
+                          height: 40,
+                          child: Text(
+                            inputs[7],
+                            style: const TextStyle(fontSize: 20.0),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 30,),
-          Column(
-            children: fillRows(),
-          ),
-          const SizedBox(height: 60.0),
-          if (finished)
-            const Center(
-              child: Icon(
-                Icons.check_circle,
-                size: 50,
-                color: Colors.green,
+                    ],
+                  ),
+                ],
               ),
             ),
-        ],
+            const SizedBox(
+              height: 30,
+            ),
+            Column(
+              children: fillRows(),
+            ),
+            const SizedBox(height: 20.0),
+            if (finished)
+              const Center(
+                child: Icon(
+                  Icons.check_circle,
+                  size: 50,
+                  color: Colors.green,
+                ),
+              ),
+            if (finished)
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const LessonThreeStudy()));
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.black, minimumSize: const Size(300, 40)),
+                child: const Text(
+                  "التالي",
+                  style: TextStyle(fontSize: 20),
+                ),
+              )
+          ],
+        ),
       ),
     );
   }

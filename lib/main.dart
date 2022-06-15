@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     Intl.defaultLocale = 'ar';
     return const MaterialApp(
 
-      home: LessonThreeStudy(),
+      home: IntroPage(),
     );
   }
 }

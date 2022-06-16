@@ -16,6 +16,17 @@ class _FirstLessonPageState extends State<FirstLessonPage> {
   String answer1 = "", answer2 = "";
   bool finished = false, next = false;
 
+  void check(){
+  if(answer1!="" && answer2!="") {
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text(
+        "إجابة غير صحيحة من فضلك أعد المحاولة",
+        textDirection: TextDirection.rtl,
+      ),
+    ));
+  }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +68,9 @@ class _FirstLessonPageState extends State<FirstLessonPage> {
                       if (answer1 == "HTML" && answer2 == "هيكلة") {
                         finished = true;
                       }
+                      else {
+                        check();
+                      }
                     }),
                     builder: (context, _, __) => SizedBox(
                       width: 70,
@@ -93,7 +107,11 @@ class _FirstLessonPageState extends State<FirstLessonPage> {
                       if (answer1 == "HTML" && answer2 == "هيكلة") {
                         finished = true;
                       }
-                    }),
+                      else {
+                        check();
+                      }
+                    },
+                    ),
                     builder: (context, _, __) => SizedBox(
                       width: 70,
                       height: 40,

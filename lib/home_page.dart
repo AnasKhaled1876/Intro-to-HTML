@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String username = "";
   String age = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +24,10 @@ class _HomePageState extends State<HomePage> {
               height: 30,
             ),
           ),
-          Expanded(flex: 3, child: Image.asset("assets/Welcome.png")),
+          Expanded(
+            flex: 3,
+            child: Image.asset("assets/Welcome.png"),
+          ),
           Expanded(
             child: TextField(
               onChanged: (String u) {
@@ -41,7 +45,9 @@ class _HomePageState extends State<HomePage> {
                   )),
             ),
           ),
-          const Expanded(child: SizedBox(height: 50)),
+          const Expanded(
+            child: SizedBox(height: 50),
+          ),
           Expanded(
             child: TextField(
               keyboardType: TextInputType.number,
@@ -73,7 +79,10 @@ class _HomePageState extends State<HomePage> {
                           builder: (context) => const MainPage()));
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text("من فضلك ادخل اسمك وعمرك",textDirection: TextDirection.rtl,),
+                    content: Text(
+                      "من فضلك ادخل اسمك وعمرك",
+                      textDirection: TextDirection.rtl,
+                    ),
                   ));
                 }
               },
@@ -92,24 +101,18 @@ class _HomePageState extends State<HomePage> {
 }
 
 class MyDB {
-
-
-  static void addFireRecord(String name, String age){
+  static void addFireRecord(String name, String age) {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-    users.add({
-        'name': name,
-        'age': age,
-      }).then((value) => print("User Added"))
+    users
+        .add({
+          'name': name,
+          'age': age,
+        })
+        .then((value) => print("User Added"))
         .catchError((error) => print("Failed to add user: $error"));
-    }
-
-
-
-
-
-
+  }
 
   static void addRecord(String name, String age) async {
     var path = "my_db.db";

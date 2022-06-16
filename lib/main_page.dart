@@ -51,16 +51,6 @@ class RoadMapPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String videoId;
-    videoId = YoutubePlayer.convertUrlToId(
-        "https://www.youtube.com/watch?v=ERXcU_TpIio")!;
-    YoutubePlayerController _controller = YoutubePlayerController(
-      initialVideoId: videoId,
-      flags: const YoutubePlayerFlags(
-        autoPlay: true,
-        mute: true,
-      ),
-    );
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -73,12 +63,8 @@ class RoadMapPage extends StatelessWidget {
         ),
         title: const Text("خريطة السير"),
       ),
-      body: Center(
-        child: YoutubePlayer(
-          controller: _controller,
-          showVideoProgressIndicator: true,
-          progressIndicatorColor: Colors.red,
-        ),
+      body: const Center(
+        child: Text("Coming soon"),
       ),
     );
   }

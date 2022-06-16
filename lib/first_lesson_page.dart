@@ -3,8 +3,6 @@ import 'package:intro_to_html/main_page.dart';
 import 'package:intro_to_html/second_lesson.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-import 'home_page.dart';
-
 class FirstLessonPage extends StatefulWidget {
   const FirstLessonPage({Key? key}) : super(key: key);
 

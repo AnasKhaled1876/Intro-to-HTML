@@ -31,7 +31,7 @@ class _LessonsPageState extends State<LessonsPage> {
         child: ListView(
           children: <Widget>[
             const SizedBox(height: 20,),
-            LessonTile("الدرس الأول", const Lesson()),
+            LessonTile("الدرس الأول", const LessonOneStudy()),
             const SizedBox(height: 20,),
             LessonTile("الدرس الثاني", const LessonTwoStudy()),
             const SizedBox(height: 20,),

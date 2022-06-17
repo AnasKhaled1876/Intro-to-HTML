@@ -74,12 +74,20 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
     "<tag>\n</tag>",
     "يوجد له نهاية",
   ];
+  List<String> answers = [
+    "كود مفرد",
+    "<tag>",
+    "ليس له نهاية",
+    "كود مزدوج",
+    "<tag>\n</tag>",
+    "يوجد له نهاية",
+  ];
   List<String> inputs = ["", "", "", "", "", ""];
   bool finished = false;
 
   bool check() {
-    for (int i = 0; i < headings.length; i++) {
-      if (inputs[i] != headings[i]) {
+    for (int i = 0; i < answers.length; i++) {
+      if (inputs[i] != answers[i]) {
         return false;
       }
     }
@@ -165,14 +173,21 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                       if (check()) {
                         finished = true;
                       }
+                      else
+                      {
+                        finished=false;
+                      }
                     }),
                     builder: (context, _, __) => Container(
                       color: Colors.black.withOpacity(0.7),
                       width: 100,
                       height: 50,
-                      child: Text(
-                        inputs[0],
-                        style: const TextStyle(fontSize: 20.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          inputs[0],
+                          style: const TextStyle(fontSize: 20.0),
+                        ),
                       ),
                     ),
                   ),
@@ -182,14 +197,21 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                       if (check()) {
                         finished = true;
                       }
+                      else
+                      {
+                        finished=false;
+                      }
                     }),
                     builder: (context, _, __) => Container(
                       color: Colors.black.withOpacity(0.7),
                       width: 100,
                       height: 50,
-                      child: Text(
-                        inputs[1],
-                        style: const TextStyle(fontSize: 20.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          inputs[1],
+                          style: const TextStyle(fontSize: 20.0),
+                        ),
                       ),
                     ),
                   ),
@@ -199,14 +221,21 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                       if (check()) {
                         finished = true;
                       }
+                      else
+                      {
+                        finished=false;
+                      }
                     }),
                     builder: (context, _, __) => Container(
                       color: Colors.black.withOpacity(0.7),
                       width: 100,
                       height: 50,
-                      child: Text(
-                        inputs[2],
-                        style: const TextStyle(fontSize: 20.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          inputs[2],
+                          style: const TextStyle(fontSize: 20.0),
+                        ),
                       ),
                     ),
                   ),
@@ -239,14 +268,21 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                     if (check()) {
                       finished = true;
                     }
+                    else
+                    {
+                      finished=false;
+                    }
                   }),
                   builder: (context, _, __) => Container(
                     color: Colors.red.withOpacity(0.7),
                     width: 100,
                     height: 50,
-                    child: Text(
-                      inputs[3],
-                      style: const TextStyle(fontSize: 20.0),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        inputs[3],
+                        style: const TextStyle(fontSize: 20.0),
+                      ),
                     ),
                   ),
                 ),
@@ -256,14 +292,21 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                     if (check()) {
                       finished = true;
                     }
+                    else
+                    {
+                      finished=false;
+                    }
                   }),
                   builder: (context, _, __) => Container(
                     color: Colors.red.withOpacity(0.7),
                     width: 100,
                     height: 50,
-                    child: Text(
-                      inputs[4],
-                      style: const TextStyle(fontSize: 20.0),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        inputs[4],
+                        style: const TextStyle(fontSize: 20.0),
+                      ),
                     ),
                   ),
                 ),
@@ -273,14 +316,21 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                     if (check()) {
                       finished = true;
                     }
+                    else
+                      {
+                        finished=false;
+                      }
                   }),
                   builder: (context, _, __) => Container(
                     color: Colors.red.withOpacity(0.7),
                     width: 100,
                     height: 50,
-                    child: Text(
-                      inputs[5],
-                      style: const TextStyle(fontSize: 20.0),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        inputs[5],
+                        style: const TextStyle(fontSize: 20.0),
+                      ),
                     ),
                   ),
                 ),

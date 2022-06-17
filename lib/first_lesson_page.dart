@@ -3,14 +3,14 @@ import 'package:intro_to_html/main_page.dart';
 import 'package:intro_to_html/second_lesson.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class FirstLessonPage extends StatefulWidget {
-  const FirstLessonPage({Key? key}) : super(key: key);
+class LessonOneActivity extends StatefulWidget {
+  const LessonOneActivity({Key? key}) : super(key: key);
 
   @override
-  State<FirstLessonPage> createState() => _FirstLessonPageState();
+  State<LessonOneActivity> createState() => _LessonOneActivityState();
 }
 
-class _FirstLessonPageState extends State<FirstLessonPage> {
+class _LessonOneActivityState extends State<LessonOneActivity> {
   String answer1 = "", answer2 = "";
   bool finished = false, next = false;
 
@@ -243,8 +243,8 @@ class MatchItem extends StatelessWidget {
   MatchItem(this.item, {Key? key}) : super(key: key);
 }
 
-class Lesson extends StatelessWidget {
-  const Lesson({Key? key}) : super(key: key);
+class LessonOneStudy extends StatelessWidget {
+  const LessonOneStudy({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -287,7 +287,7 @@ class Lesson extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const FirstLessonPage()));
+                      builder: (context) => const LessonOneActivity()));
             },
             style: ElevatedButton.styleFrom(
                 primary: Colors.black, minimumSize: const Size(300, 60)),

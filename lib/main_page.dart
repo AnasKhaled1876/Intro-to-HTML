@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intro_to_html/educative_games_page.dart';
 import 'package:intro_to_html/lessons_page.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -37,7 +38,10 @@ class MainPage extends StatelessWidget {
             child: Image.asset("assets/list2.png"),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const EducativeGames()));
+            },
             child: Image.asset("assets/list3.png"),
           ),
         ],

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/home_page.dart';
 
+import 'lesson_four_page.dart';
+
 class LessonThreeStudy extends StatelessWidget {
   const LessonThreeStudy({Key? key}) : super(key: key);
 
@@ -355,7 +357,7 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const LessonThreeStudy()));
+                      MaterialPageRoute(builder: (context) => const LessonFourStudy()));
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Colors.black, minimumSize: const Size(300, 40)),

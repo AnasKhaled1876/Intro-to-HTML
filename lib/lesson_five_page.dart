@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intro_to_html/lesson_six_page.dart';
 import 'package:intro_to_html/lessons_page.dart';
 
 import 'first_lesson_page.dart';
@@ -329,7 +330,7 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const LessonsPage()));
+                      MaterialPageRoute(builder: (context) => const LessonSixStudy()));
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Colors.black, minimumSize: const Size(300, 40)),

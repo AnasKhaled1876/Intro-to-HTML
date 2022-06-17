@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/first_lesson_page.dart';
+import 'package:intro_to_html/lesson_five_page.dart';
 import 'package:intro_to_html/lesson_four_page.dart';
+import 'package:intro_to_html/lesson_six_page.dart';
 import 'package:intro_to_html/second_lesson.dart';
 import 'package:intro_to_html/third_lesson_page.dart';
 
@@ -39,9 +41,9 @@ class _LessonsPageState extends State<LessonsPage> {
             const SizedBox(height: 20,),
             LessonTile("الدرس الرابع", const LessonFourStudy()),
             const SizedBox(height: 20,),
-            LessonTile("الدرس الخامس", const LessonsPage()),
+            LessonTile("الدرس الخامس", const LessonFiveStudy()),
             const SizedBox(height: 20,),
-            LessonTile("الدرس السادس", const LessonsPage()),
+            LessonTile("الدرس السادس", const LessonSixStudy()),
           ],
         ),
       ),

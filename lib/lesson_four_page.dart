@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intro_to_html/lesson_five_page.dart';
 import 'package:intro_to_html/lessons_page.dart';
 
 class LessonFourStudy extends StatelessWidget {
@@ -67,16 +68,23 @@ class LessonFourActivity extends StatefulWidget {
 class _LessonFourActivityState extends State<LessonFourActivity> {
   List<bool> checkBoxValues = [false, false, false, false];
   bool finished = false;
-  void checkAndSetRestFalse(int except){
-    for(int i = 0; i<checkBoxValues.length;i++)
-      {
-        if(i == except) {
-          continue;
-        }
-        checkBoxValues[i]=false;
+
+  void checkAndSetRestFalse(int except) {
+    for (int i = 0; i < checkBoxValues.length; i++) {
+      if (i == except) {
+        continue;
       }
+      checkBoxValues[i] = false;
+    }
   }
 
+  void setFinished(){
+    if (checkBoxValues[2] == true) {
+      finished = true;
+    } else {
+      finished = false;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,6 +156,7 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                           setState(() {
                             checkBoxValues[0] = val;
                             checkAndSetRestFalse(0);
+                            setFinished();
                           });
                         },
                         activeColor: Colors.grey,
@@ -176,6 +185,7 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                           setState(() {
                             checkBoxValues[1] = val;
                             checkAndSetRestFalse(1);
+                            setFinished();
                           });
                         },
                         activeColor: Colors.grey,
@@ -203,8 +213,8 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                           checkBoxValues[2] = val!;
                           setState(() {
                             checkBoxValues[2] = val;
-                            finished=true;
                             checkAndSetRestFalse(2);
+                            setFinished();
                           });
                         },
                         activeColor: Colors.grey,
@@ -233,6 +243,7 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                           setState(() {
                             checkBoxValues[3] = val;
                             checkAndSetRestFalse(3);
+                            setFinished();
                           });
                         },
                         activeColor: Colors.grey,
@@ -257,8 +268,10 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
             if (finished)
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const LessonsPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LessonFiveStudy()));
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Colors.black, minimumSize: const Size(300, 60)),

@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/main_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+  static late SharedPreferences prefs;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -13,6 +15,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String username = "";
   String age = "";
+
+  Future initialize() async {
+    HomePage.prefs = await SharedPreferences.getInstance();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +76,11 @@ class _HomePageState extends State<HomePage> {
           const Expanded(child: SizedBox(height: 30)),
           Expanded(
             child: ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
+                await initialize();
                 if (username != "" && age != "") {
+                  HomePage.prefs.setString("name", username);
+                  HomePage.prefs.setString("age", age);
                   MyDB.addFireRecord(username, age);
                   Navigator.push(
                       context,

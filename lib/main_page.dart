@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/educative_games_page.dart';
 import 'package:intro_to_html/lessons_page.dart';
+import 'package:intro_to_html/profile_page.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MainPage extends StatelessWidget {
@@ -9,15 +10,25 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          itemExtent: 700,
+          children: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfilePage()));
+              },
+              child: const Text("الملف الشخصي",style: TextStyle(fontSize: 25),),
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.deepOrangeAccent,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.menu,
-          ),
-        ),
         title: const Text("لوحة التعلم"),
       ),
       body: ListView(
@@ -39,8 +50,10 @@ class MainPage extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const EducativeGames()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const EducativeGames()));
             },
             child: Image.asset("assets/list3.png"),
           ),

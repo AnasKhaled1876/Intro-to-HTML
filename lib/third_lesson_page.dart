@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intro_to_html/home_page.dart';
 
 import 'lesson_four_page.dart';
+import 'main_page.dart';
 
 class LessonThreeStudy extends StatelessWidget {
   const LessonThreeStudy({Key? key}) : super(key: key);
@@ -14,9 +15,12 @@ class LessonThreeStudy extends StatelessWidget {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MainPage()));
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.home),
         ),
         title: const Text("الدرس الثالث"),
       ),
@@ -126,9 +130,12 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MainPage()));
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.home),
         ),
         title: const Text("النشاط"),
       ),
@@ -356,6 +363,7 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
             if (finished)
               ElevatedButton(
                 onPressed: () {
+                  HomePage.checkLevel(3);
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const LessonFourStudy()));
                 },

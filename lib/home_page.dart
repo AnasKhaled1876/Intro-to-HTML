@@ -8,6 +8,12 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
   static late SharedPreferences prefs;
 
+  static void checkLevel(int n) {
+    if(HomePage.prefs.getInt("Level")!<n) {
+      HomePage.prefs.setInt("Level", n);
+    }
+  }
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -81,6 +87,7 @@ class _HomePageState extends State<HomePage> {
                 if (username != "" && age != "") {
                   HomePage.prefs.setString("name", username);
                   HomePage.prefs.setString("age", age);
+                  HomePage.prefs.setInt("Level", 1);
                   MyDB.addFireRecord(username, age);
                   Navigator.push(
                       context,

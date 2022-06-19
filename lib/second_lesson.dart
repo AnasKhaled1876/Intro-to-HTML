@@ -3,6 +3,7 @@ import 'package:intro_to_html/third_lesson_page.dart';
 
 import 'first_lesson_page.dart';
 import 'home_page.dart';
+import 'main_page.dart';
 
 class LessonTwoStudy extends StatefulWidget {
   const LessonTwoStudy({Key? key}) : super(key: key);
@@ -20,9 +21,12 @@ class _LessonTwoStudyState extends State<LessonTwoStudy> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MainPage()));
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.home),
         ),
         title: const Text("الدرس الثاني"),
       ),
@@ -131,9 +135,12 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MainPage()));
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.home),
         ),
         title: const Text("النشاط"),
       ),
@@ -142,6 +149,14 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+             Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "قم بترتيب الاكواد التالية حسب الترتيب الصحيح للبنية الهيكلية لغة HTML",
+                textDirection: TextDirection.rtl,
+                style: TextStyle(fontSize: 21.0, fontWeight: FontWeight.bold,color: Colors.red[900]),
+              ),
+            ),
             Container(
               color: Colors.blue.withOpacity(0.3),
               width: 195,
@@ -162,7 +177,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         }),
                         builder: (context, _, __) => Container(
                           width: 90,
-                          height: 40,
+                          height: 35,
                           child: Text(
                             inputs[0],
                             style: const TextStyle(fontSize: 20.0),
@@ -186,7 +201,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         }),
                         builder: (context, _, __) => Container(
                           width: 90,
-                          height: 40,
+                          height: 35,
                           child: Text(
                             inputs[1],
                             style: const TextStyle(fontSize: 20.0),
@@ -210,7 +225,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         }),
                         builder: (context, _, __) => Container(
                           width: 90,
-                          height: 40,
+                          height: 35,
                           child: Text(
                             inputs[2],
                             style: const TextStyle(fontSize: 20.0),
@@ -234,7 +249,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         }),
                         builder: (context, _, __) => Container(
                           width: 90,
-                          height: 40,
+                          height: 35,
                           child: Text(
                             inputs[3],
                             style: const TextStyle(fontSize: 20.0),
@@ -258,7 +273,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         }),
                         builder: (context, _, __) => Container(
                           width: 90,
-                          height: 40,
+                          height: 35,
                           child: Text(
                             inputs[4],
                             style: const TextStyle(fontSize: 20.0),
@@ -282,7 +297,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         }),
                         builder: (context, _, __) => Container(
                           width: 90,
-                          height: 40,
+                          height: 35,
                           child: Text(
                             inputs[5],
                             style: const TextStyle(fontSize: 20.0),
@@ -306,7 +321,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         }),
                         builder: (context, _, __) => Container(
                           width: 90,
-                          height: 40,
+                          height: 35,
                           child: Text(
                             inputs[6],
                             style: const TextStyle(fontSize: 20.0),
@@ -330,7 +345,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         }),
                         builder: (context, _, __) => Container(
                           width: 90,
-                          height: 40,
+                          height: 35,
                           child: Text(
                             inputs[7],
                             style: const TextStyle(fontSize: 20.0),
@@ -350,16 +365,9 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
             ),
             const SizedBox(height: 20.0),
             if (finished)
-              const Center(
-                child: Icon(
-                  Icons.check_circle,
-                  size: 50,
-                  color: Colors.green,
-                ),
-              ),
-            if (finished)
               ElevatedButton(
                 onPressed: () {
+                  HomePage.checkLevel(2);
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const LessonThreeStudy()));
                 },
@@ -394,7 +402,7 @@ class HeadingsBox extends StatelessWidget {
         ),
       ),
       width: 70,
-      height: 40,
+      height: 37,
       child: Center(
         child: Text(
           heading,
@@ -406,3 +414,11 @@ class HeadingsBox extends StatelessWidget {
     );
   }
 }
+// if (finished)
+// const Center(
+// child: Icon(
+// Icons.check_circle,
+// size: 50,
+// color: Colors.green,
+// ),
+// ),

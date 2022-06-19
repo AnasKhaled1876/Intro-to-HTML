@@ -10,14 +10,20 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-
-  List<Widget> fillLevels(){
-    List<Widget> myLevels= [];
-
-    for(int i=6;i>0;i--)
-      {
-       myLevels.add(LevelTile(levelNumber: "${i}",));
+  List<Widget> fillLevels() {
+    List<Widget> myLevels = [];
+    int? userLevel = HomePage.prefs.getInt("Level");
+    for (int i = 6; i > 0; i--) {
+      if (i == userLevel) {
+        myLevels.add(LevelTile(
+          levelNumber: "$i",checkBoxValue: true,
+        ));
+        continue;
       }
+      myLevels.add(LevelTile(
+        levelNumber: "$i",checkBoxValue: false,
+      ));
+    }
     return myLevels;
   }
 
@@ -87,9 +93,11 @@ class _ProfilePageState extends State<ProfilePage> {
 
 class LevelTile extends StatelessWidget {
   const LevelTile({
-    Key? key, required this.levelNumber,
+    Key? key,
+    required this.levelNumber, required this.checkBoxValue,
   }) : super(key: key);
   final String levelNumber;
+  final bool  checkBoxValue;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -97,9 +105,9 @@ class LevelTile extends StatelessWidget {
         levelNumber,
         style: const TextStyle(fontSize: 30),
       ),
-      title: const Checkbox(
+      title:  Checkbox(
         onChanged: null,
-        value: false,
+        value: checkBoxValue,
       ),
       contentPadding: const EdgeInsets.symmetric(horizontal: 5),
     );

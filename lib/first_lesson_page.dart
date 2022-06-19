@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intro_to_html/home_page.dart';
 import 'package:intro_to_html/main_page.dart';
 import 'package:intro_to_html/second_lesson.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -185,6 +186,7 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
             Center(
               child: ElevatedButton(
                 onPressed: () {
+                  HomePage.checkLevel(1);
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -264,9 +266,12 @@ class LessonOneStudy extends StatelessWidget {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MainPage()));
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.home),
         ),
         title: const Text("خريطة السير"),
       ),

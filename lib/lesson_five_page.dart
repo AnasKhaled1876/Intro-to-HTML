@@ -3,6 +3,8 @@ import 'package:intro_to_html/lesson_six_page.dart';
 import 'package:intro_to_html/lessons_page.dart';
 
 import 'first_lesson_page.dart';
+import 'home_page.dart';
+import 'main_page.dart';
 
 class LessonFiveStudy extends StatefulWidget {
   const LessonFiveStudy({Key? key}) : super(key: key);
@@ -22,9 +24,12 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MainPage()));
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.home),
         ),
         title: const Text("الدرس الخامس"),
       ),
@@ -138,9 +143,12 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MainPage()));
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.home),
         ),
         title: const Text("النشاط"),
       ),
@@ -329,6 +337,7 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
             if (finished)
               ElevatedButton(
                 onPressed: () {
+                  HomePage.checkLevel(5);
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const LessonSixStudy()));
                 },

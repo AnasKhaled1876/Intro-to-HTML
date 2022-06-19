@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intro_to_html/home_page.dart';
 import 'package:intro_to_html/main_page.dart';
 import 'package:intro_to_html/second_lesson.dart';
+import 'package:sizer/sizer.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class LessonOneActivity extends StatefulWidget {
@@ -52,7 +53,7 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
               textDirection: TextDirection.rtl,
               style: TextStyle(
                   decoration: TextDecoration.underline,
-                  fontSize: 30.0,
+                  fontSize: 22.0.sp,
                   color: Colors.red[900]),
             ),
           ),
@@ -72,19 +73,19 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
                       }
                     }),
                     builder: (context, _, __) => SizedBox(
-                      width: 70,
-                      height: 40,
+                      width: 17.w,
+                      height: 5.h,
                       child: Text(
                         answer2,
-                        style: const TextStyle(fontSize: 23.0),
+                        style:  TextStyle(fontSize: 23.0.sp),
                       ),
                     ),
                   ),
-                  const Align(
+                   Align(
                     alignment: Alignment.centerRight,
                     child: Text(
                       "..................",
-                      style: TextStyle(fontSize: 20.0, color: Colors.red),
+                      style: TextStyle(fontSize: 14.0.sp, color: Colors.red),
                     ),
                   ),
                 ],
@@ -95,7 +96,7 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
                   "في تصميم",
                   textAlign: TextAlign.right,
                   textDirection: TextDirection.rtl,
-                  style: TextStyle(fontSize: 23.0, color: Colors.red[900]),
+                  style: TextStyle(fontSize: 18.sp, color: Colors.red[900]),
                 ),
               ),
               Column(
@@ -112,20 +113,20 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
                     },
                     ),
                     builder: (context, _, __) => SizedBox(
-                      width: 70,
-                      height: 40,
+                      width: 22.w,
+                      height: 5.h,
                       child: Text(
                         answer1,
-                        style: const TextStyle(fontSize: 25.0),
+                        style:  TextStyle(fontSize: 23.0.sp),
                       ),
                     ),
                   ),
                   Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        "..................",
+                        "..................  ",
                         style:
-                            TextStyle(fontSize: 20.0, color: Colors.red[900]),
+                            TextStyle(fontSize: 15.sp, color: Colors.red[900]),
                       )),
                 ],
               ),
@@ -135,28 +136,28 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
                   "تستخدم لغة ",
                   textAlign: TextAlign.right,
                   textDirection: TextDirection.rtl,
-                  style: TextStyle(fontSize: 25.0, color: Colors.red[900]),
+                  style: TextStyle(fontSize: 18.sp, color: Colors.red[900]),
                 ),
               ),
             ],
           ),
-          const SizedBox(
-            height: 20,
+           SizedBox(
+            height: 3.h,
           ),
           Align(
             alignment: Alignment.bottomRight,
             child: Text(
-              "المواقع الالكترونية",
+              ".المواقع الالكترونية",
               style: TextStyle(fontSize: 23.0, color: Colors.red[900]),
             ),
           ),
-          const SizedBox(height: 150),
+          SizedBox(height: 15.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              DraggableItem(item: "CSS"),
-              SizedBox(width: 30.0),
-              DraggableItem(item: "HTML"),
+            children:  <Widget>[
+              const DraggableItem(item: "CSS"),
+              SizedBox(width: 8.w),
+              const DraggableItem(item: "HTML"),
             ],
           ),
           const SizedBox(
@@ -164,24 +165,13 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              DraggableItem(item: "تنسيق"),
-              SizedBox(width: 30.0),
-              DraggableItem(item: "هيكلة"),
+            children:  <Widget>[
+              const DraggableItem(item: "تنسيق"),
+              SizedBox(width: 8.w),
+              const DraggableItem(item: "هيكلة"),
             ],
           ),
-          const SizedBox(height: 60.0),
-          if (finished)
-            const Center(
-              child: Icon(
-                Icons.check_circle,
-                size: 50,
-                color: Colors.green,
-              ),
-            ),
-          const SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 6.h),
           if (finished)
             Center(
               child: ElevatedButton(
@@ -193,10 +183,10 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
                           builder: (context) => const LessonTwoStudy()));
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.black, minimumSize: const Size(300, 60)),
-                child: const Text(
+                    primary: Colors.black, minimumSize:  Size(70.w, 7.h)),
+                child:  Text(
                   "التالي",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20.sp),
                 ),
               ),
             )
@@ -229,13 +219,13 @@ class MatchItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.blueGrey,
-      width: 100,
-      height: 45,
+      width: 29.w,
+      height: 6.h,
       child: Center(
           child: Text(
         item,
-        style: const TextStyle(
-            fontSize: 20.0,
+        style:  TextStyle(
+            fontSize: 20.sp,
             decoration: TextDecoration.none,
             color: Colors.white),
       )),
@@ -277,6 +267,9 @@ class LessonOneStudy extends StatelessWidget {
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 22.h,
+          ),
           Center(
             child: YoutubePlayer(
               controller: _controller,
@@ -284,8 +277,8 @@ class LessonOneStudy extends StatelessWidget {
               progressIndicatorColor: Colors.red,
             ),
           ),
-          const SizedBox(
-            height: 60,
+           SizedBox(
+            height: 14.h,
           ),
           ElevatedButton(
             onPressed: () {
@@ -295,10 +288,10 @@ class LessonOneStudy extends StatelessWidget {
                       builder: (context) => const LessonOneActivity()));
             },
             style: ElevatedButton.styleFrom(
-                primary: Colors.black, minimumSize: const Size(300, 60)),
-            child: const Text(
+                primary: Colors.black, minimumSize:  Size(80.w, 8.h)),
+            child: Text(
               "النشاط",
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20.sp),
             ),
           )
         ],

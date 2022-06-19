@@ -5,6 +5,7 @@ import 'package:intro_to_html/lesson_four_page.dart';
 import 'package:intro_to_html/lesson_six_page.dart';
 import 'package:intro_to_html/second_lesson.dart';
 import 'package:intro_to_html/third_lesson_page.dart';
+import 'package:sizer/sizer.dart';
 
 class LessonsPage extends StatefulWidget {
   const LessonsPage({Key? key}) : super(key: key);
@@ -29,20 +30,20 @@ class _LessonsPageState extends State<LessonsPage> {
         title: const Text("دروسك"),
       ),
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20),
+        margin: EdgeInsets.symmetric(horizontal: 3.h),
         child: ListView(
           children: <Widget>[
-            const SizedBox(height: 20,),
+             SizedBox(height: 3.h,),
             LessonTile("الدرس الأول", const LessonOneStudy()),
-            const SizedBox(height: 20,),
+             SizedBox(height: 3.h,),
             LessonTile("الدرس الثاني", const LessonTwoStudy()),
-            const SizedBox(height: 20,),
+             SizedBox(height: 3.h,),
             LessonTile("الدرس الثالث", const LessonThreeStudy()),
-            const SizedBox(height: 20,),
+             SizedBox(height: 3.h,),
             LessonTile("الدرس الرابع", const LessonFourStudy()),
-            const SizedBox(height: 20,),
+             SizedBox(height: 3.h,),
             LessonTile("الدرس الخامس", const LessonFiveStudy()),
-            const SizedBox(height: 20,),
+             SizedBox(height: 3.h,),
             LessonTile("الدرس السادس", const LessonSixStudy()),
           ],
         ),

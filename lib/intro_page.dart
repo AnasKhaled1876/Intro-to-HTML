@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/home_page.dart';
+import 'package:sizer/sizer.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);
@@ -14,23 +15,23 @@ class _IntroPageState extends State<IntroPage> {
     return Scaffold(
       body: Column(
         children:  <Widget>[
-          const SizedBox(height: 60,),
+           SizedBox(height: 10.h,),
           Image.asset("assets/Welcome.png"),
-          const SizedBox(height: 50,),
-          const Text(
+           SizedBox(height: 5.h,),
+           Text(
             "مرحبا بك يا صديقي سنتعلم سويا آساسيات برمجة الويب \n  \t\t\t\t\t\t\t\t\t\t\t لبدء التعلم اضغط على زر الدخول ",
-            style: TextStyle(fontSize: 18.0,color: Colors.redAccent,fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 13.0.sp,color: Colors.redAccent,fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 60,),
+           SizedBox(height: 6.h,),
           ElevatedButton(
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
             },
             style: ElevatedButton.styleFrom(
-                primary: Colors.black, minimumSize: const Size(300, 60)),
-            child: const Text(
+                primary: Colors.black, minimumSize:  Size(30.h, 2.w)),
+            child:  Text(
               "دخول",
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20.sp),
             ),
           ),
         ],

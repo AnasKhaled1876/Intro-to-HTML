@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/main_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sizer/sizer.dart';
 import 'package:sqflite/sqflite.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,7 +10,7 @@ class HomePage extends StatefulWidget {
   static late SharedPreferences prefs;
 
   static void checkLevel(int n) {
-    if(HomePage.prefs.getInt("Level")!<n) {
+    if (HomePage.prefs.getInt("Level")! < n) {
       HomePage.prefs.setInt("Level", n);
     }
   }
@@ -31,11 +32,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          const Expanded(
-            child: SizedBox(
-              height: 30,
+           SizedBox(
+              height: 7.h,
             ),
-          ),
           Expanded(
             flex: 3,
             child: Image.asset("assets/Welcome.png"),
@@ -48,17 +47,14 @@ class _HomePageState extends State<HomePage> {
               decoration: InputDecoration(
                   labelText: 'ادخل اسمك',
                   enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(width: 3, color: Colors.black),
+                    borderSide:  BorderSide(width: 1.w, color: Colors.black),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(width: 3, color: Colors.blue),
+                    borderSide:  BorderSide(width: 1.w, color: Colors.blue),
                     borderRadius: BorderRadius.circular(5),
                   )),
             ),
-          ),
-          const Expanded(
-            child: SizedBox(height: 50),
           ),
           Expanded(
             child: TextField(
@@ -69,47 +65,46 @@ class _HomePageState extends State<HomePage> {
               decoration: InputDecoration(
                 labelText: 'ادخل عمرك',
                 enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(width: 3, color: Colors.black),
+                  borderSide:  BorderSide(width: 1.w, color: Colors.black),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(width: 3, color: Colors.blue),
+                  borderSide:  BorderSide(width: 1.w, color: Colors.blue),
                   borderRadius: BorderRadius.circular(5),
                 ),
               ),
             ),
           ),
-          const Expanded(child: SizedBox(height: 30)),
-          Expanded(
-            child: ElevatedButton(
-              onPressed: () async {
-                await initialize();
-                if (username != "" && age != "") {
-                  HomePage.prefs.setString("name", username);
-                  HomePage.prefs.setString("age", age);
-                  HomePage.prefs.setInt("Level", 1);
-                  MyDB.addFireRecord(username, age);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MainPage()));
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text(
-                      "من فضلك ادخل اسمك وعمرك",
-                      textDirection: TextDirection.rtl,
-                    ),
-                  ));
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.black, minimumSize: const Size(300, 60)),
-              child: const Text(
-                "التالي",
-                style: TextStyle(fontSize: 20),
-              ),
+           SizedBox(height: 3.h),
+          ElevatedButton(
+            onPressed: () async {
+              await initialize();
+              if (username != "" && age != "") {
+                HomePage.prefs.setString("name", username);
+                HomePage.prefs.setString("age", age);
+                HomePage.prefs.setInt("Level", 1);
+                MyDB.addFireRecord(username, age);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MainPage()));
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text(
+                    "من فضلك ادخل اسمك وعمرك",
+                    textDirection: TextDirection.rtl,
+                  ),
+                ));
+              }
+            },
+            style: ElevatedButton.styleFrom(
+                primary: Colors.black, minimumSize:  Size(80.w, 8.h)),
+            child:  Text(
+              "التالي",
+              style: TextStyle(fontSize: 20.sp),
             ),
           ),
+          SizedBox(height: 5.h),
         ],
       ),
     );

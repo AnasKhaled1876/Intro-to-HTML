@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intro_to_html/educative_games_page.dart';
 import 'package:intro_to_html/lessons_page.dart';
 import 'package:intro_to_html/profile_page.dart';
+import 'package:sizer/sizer.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MainPage extends StatelessWidget {
@@ -21,7 +22,7 @@ class MainPage extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => const ProfilePage()));
               },
-              child: const Text("الملف الشخصي",style: TextStyle(fontSize: 25),),
+              child:  Text("الملف الشخصي",style: TextStyle(fontSize: 23.sp),),
             )
           ],
         ),

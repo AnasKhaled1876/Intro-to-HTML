@@ -41,6 +41,7 @@ dependencies:
   youtube_player_flutter: ^8.1.0
   image_picker: ^0.8.5+3
   shared_preferences: ^2.0.15
+  sizer: ^2.0.15
 
 dev_dependencies:
   flutter_test:

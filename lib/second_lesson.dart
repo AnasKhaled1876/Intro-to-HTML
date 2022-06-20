@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/third_lesson_page.dart';
 import 'package:sizer/sizer.dart';
-
-import 'first_lesson_page.dart';
 import 'home_page.dart';
 import 'main_page.dart';
 
@@ -22,38 +20,49 @@ class _LessonTwoStudyState extends State<LessonTwoStudy> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const MainPage()));
+            Navigator.pop(context);
           },
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("الدرس الثاني"),
+        title: Row(
+          children: [
+            SizedBox(width: 20.w,),
+            const Text("الدرس الثاني"),
+            SizedBox(width: 21.w,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MainPage()));
+                },
+                icon: const Icon(Icons.home),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+        margin:  EdgeInsets.symmetric(horizontal: 1.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            const SizedBox(
-              height: 70,
+            SizedBox(
+              height: 5.h,
             ),
-            const Align(
+            Align(
               alignment: Alignment.centerRight,
               child: Text(
                 "ما هو شكل صفحة الHTML",
                 style: TextStyle(
                     decoration: TextDecoration.underline,
-                    fontSize: 26.0,
+                    fontSize: 22.sp,
                     color: Colors.redAccent),
                 textDirection: TextDirection.rtl,
               ),
             ),
             Center(
-              child: SizedBox(
-                width: 350,
-                height: 300,
-                child: Image.asset("assets/lesson2.png"),
-              ),
+              child: Image.asset("assets/lesson2.png"),
             ),
             Center(
               child: ElevatedButton(
@@ -64,10 +73,10 @@ class _LessonTwoStudyState extends State<LessonTwoStudy> {
                           builder: (context) => const LessonTwoActivity()));
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.black, minimumSize: const Size(300, 60)),
-                child: const Text(
+                    primary: Colors.black, minimumSize: Size(80.w, 9.h)),
+                child: Text(
                   "النشاط",
-                  style: TextStyle(fontSize: 24),
+                  style: TextStyle(fontSize: 24.sp),
                 ),
               ),
             )
@@ -116,9 +125,9 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            DraggableItem(item: headingsNo[i]),
+            DraggableItemLevelTwo(item: headingsNo[i]),
              SizedBox(width: 13.w),
-            DraggableItem(item: headingsNo[i + 1]),
+            DraggableItemLevelTwo(item: headingsNo[i + 1]),
           ],
         ),
       );
@@ -134,15 +143,30 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const MainPage()));
+            Navigator.pop(context);
           },
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("النشاط"),
+        title: Row(
+          children: [
+            SizedBox(width: 25.w,),
+            const Text("النشاط"),
+            SizedBox(width: 27.w,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MainPage()));
+                },
+                icon: const Icon(Icons.home),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Container(
-        margin: EdgeInsets.all(2.h),
+        margin: EdgeInsets.symmetric(horizontal: 1.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -159,7 +183,8 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
             ),
             Container(
               color: Colors.blue.withOpacity(0.3),
-              width: 55.w,
+              width: 50.w,
+              height: 40.h,
               child: Column(
                 children: <Widget>[
                   Row(
@@ -334,7 +359,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                           builder: (context) => const LessonThreeStudy()));
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.black, minimumSize: const Size(300, 40)),
+                    primary: Colors.black, minimumSize: Size(80.w, 9.h)),
                 child:  Text(
                   "التالي",
                   style: TextStyle(fontSize: 20.sp),
@@ -358,12 +383,12 @@ class DragTargetContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 30.w,
+      width: 24.w,
       height: 5.h,
       child: Align(
         child: Text(
           input,
-          style: TextStyle(fontSize: 18.sp),
+          style: TextStyle(fontSize: 16.sp),
         ),
       ),
     );
@@ -386,19 +411,62 @@ class HeadingsBox extends StatelessWidget {
           Radius.circular(9),
         ),
       ),
-      width: 70,
-      height: 37,
+      width: 15.w,
+      height: 5.h,
       child: Center(
         child: Text(
           heading,
-          style: const TextStyle(
-            fontSize: 27.0,
+          style: TextStyle(
+            fontSize: 18.sp,
           ),
         ),
       ),
     );
   }
 }
+
+class DraggableItemLevelTwo extends StatelessWidget {
+  final String item;
+
+  const DraggableItemLevelTwo({super.key, required this.item});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Draggable<String>(
+      data: item,
+      feedback: MatchItemLevelTwo(item: item),
+      childWhenDragging: null,
+      child: MatchItemLevelTwo(item: item),
+    );
+  }
+}
+
+class MatchItemLevelTwo extends StatelessWidget {
+  final String item;
+
+  const MatchItemLevelTwo({super.key, required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blueGrey,
+      width: 29.w,
+      height: 4.h,
+      child: Center(
+          child: Text(
+            item,
+            style:  TextStyle(
+                fontSize: 17.sp,
+                decoration: TextDecoration.none,
+                color: Colors.white),
+          )),
+    );
+  }
+
+
+}
+
 // if (finished)
 // const Center(
 // child: Icon(

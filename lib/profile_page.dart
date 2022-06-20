@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/home_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sizer/sizer.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -33,9 +33,9 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.deepOrangeAccent,
-        title: const Text(
+        title: Text(
           "الملف الشخصي",
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
         ),
       ),
       body: Column(
@@ -45,43 +45,44 @@ class _ProfilePageState extends State<ProfilePage> {
             leading: StringBar(
               myText: HomePage.prefs.getString("name"),
             ),
-            trailing: const Text(
+            trailing: Text(
               "الاسم",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
             ),
           ),
-          const SizedBox(
-            height: 40,
+          SizedBox(
+            height: 6.h,
           ),
           ListTile(
             leading: StringBar(
               myText: HomePage.prefs.getString("age"),
             ),
-            trailing: const Text(
+            trailing: Text(
               "العمر",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
             ),
           ),
-          const SizedBox(
-            height: 50,
+          SizedBox(
+            height: 7.h,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: const [
+            children: [
               Text(
                 "مستوى التقدم",
-                style: TextStyle(fontSize: 30),
+                style: TextStyle(fontSize: 22.sp,fontWeight: FontWeight.bold),
               ),
             ],
           ),
           Container(
             alignment: Alignment.center,
-            height: 40,
-            margin: const EdgeInsets.symmetric(horizontal: 10),
+            height: 10.h,
+            width: 100.w,
+            margin: EdgeInsets.symmetric(horizontal: 1.h),
             child: ListView(
               scrollDirection: Axis.horizontal,
-              itemExtent: 50,
-              padding: const EdgeInsets.symmetric(horizontal: 35),
+              itemExtent: 60,
+              padding: EdgeInsets.symmetric(horizontal: 2.h),
               children: fillLevels(),
             ),
           )
@@ -103,13 +104,14 @@ class LevelTile extends StatelessWidget {
     return ListTile(
       trailing: Text(
         levelNumber,
-        style: const TextStyle(fontSize: 30),
+        style: TextStyle(fontSize: 25.sp),
       ),
       title:  Checkbox(
         onChanged: null,
         value: checkBoxValue,
+        shape: const CircleBorder(),
       ),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+      contentPadding: EdgeInsets.symmetric(horizontal: 1.w),
     );
   }
 }
@@ -122,16 +124,16 @@ class StringBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 15),
-      width: 250,
-      height: 70,
+      margin: EdgeInsets.symmetric(horizontal: 1.w),
+      width: 67.w,
+      height: 12.h,
       color: Colors.grey.withOpacity(0.7),
       child: Center(
         child: Align(
           alignment: Alignment.center,
           child: Text(
             myText!,
-            style: const TextStyle(fontSize: 35.0, color: Colors.white),
+            style: TextStyle(fontSize: 30.sp, color: Colors.white),
             textAlign: TextAlign.center,
           ),
         ),

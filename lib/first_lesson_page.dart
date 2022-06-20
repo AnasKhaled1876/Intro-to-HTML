@@ -35,12 +35,27 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const MainPage()));
+            Navigator.pop(context);
           },
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("الدرس الأول"),
+        title: Row(
+          children: [
+            SizedBox(width: 20.w,),
+            const Text("الدرس الأول"),
+            SizedBox(width: 21.w,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MainPage()));
+                },
+                icon: const Icon(Icons.home),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -256,14 +271,27 @@ class LessonOneStudy extends StatelessWidget {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MainPage()));
+            Navigator.pop(context);
           },
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("خريطة السير"),
+        title: Row(
+          children: [
+            SizedBox(width: 20.w,),
+            const Text("الدرس الأول"),
+            SizedBox(width: 21.w,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MainPage()));
+                },
+                icon: const Icon(Icons.home),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Column(
         children: [

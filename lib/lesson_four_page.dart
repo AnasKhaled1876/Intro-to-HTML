@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/lesson_five_page.dart';
 import 'package:intro_to_html/lessons_page.dart';
+import 'package:sizer/sizer.dart';
 
 import 'home_page.dart';
 import 'main_page.dart';
@@ -16,17 +17,30 @@ class LessonFourStudy extends StatelessWidget {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MainPage()));
+            Navigator.pop(context);
           },
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("الدرس الرابع"),
+        title: Row(
+          children: [
+            SizedBox(width: 21.w,),
+            const Text("الدرس الرابع"),
+            SizedBox(width: 19.w,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MainPage()));
+                },
+                icon: const Icon(Icons.home),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+        margin: EdgeInsets.symmetric(horizontal: 2.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
@@ -46,17 +60,16 @@ class LessonFourStudy extends StatelessWidget {
                           builder: (context) => const LessonFourActivity()));
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.black, minimumSize: const Size(300, 60)),
-                child: const Text(
+                    primary: Colors.black, minimumSize: Size(80.w, 8.h)),
+                child:  Text(
                   "النشاط",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20.sp),
                 ),
               ),
             ),
-            const Expanded(
-                child: SizedBox(
-              height: 40,
-            ))
+            SizedBox(
+              height: 9.h,
+            )
           ],
         ),
       ),
@@ -99,64 +112,77 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MainPage()));
+            Navigator.pop(context);
           },
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("النشاط"),
+        title: Row(
+          children: [
+            SizedBox(width: 21.w,),
+            const Text("النشاط"),
+            SizedBox(width: 19.w,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MainPage()));
+                },
+                icon: const Icon(Icons.home),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Container(
-        margin: const EdgeInsets.all(10),
+        margin: EdgeInsets.all(1.w),
         child: Column(
           children: <Widget>[
-            const SizedBox(
-              height: 40,
+            SizedBox(
+              height: 4.h,
             ),
-            const Align(
+            Align(
               alignment: Alignment.centerRight,
               child: Text(
                 "أمامك بعض المشكلات يرجى ملاحظتها جيدا واختيار الإجابة الصحيحة بين المشكلات التالية:",
                 textDirection: TextDirection.rtl,
-                style: TextStyle(fontSize: 21.0, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18.0.sp, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(
-              height: 40,
+            SizedBox(
+              height: 4.h,
             ),
             Container(
               width: double.infinity,
               color: Colors.deepOrangeAccent,
-              child: const Center(
+              child: Center(
                 child: Text(
                   "قام احد المبرمجين المبتدئين بكتابة كود العنوان في رأيك كيف قام بكتابته",
                   textDirection: TextDirection.rtl,
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 23.0),
+                      fontSize: 20.0.sp),
                   textAlign: TextAlign.center,
                 ),
               ),
             ),
-            const SizedBox(
-              height: 40,
+            SizedBox(
+              height: 6.h,
             ),
             Row(
               children: <Widget>[
                 Container(
                   color: Colors.deepOrangeAccent.withOpacity(0.6),
-                  height: 110,
-                  width: 90,
+                  height: 15.h,
+                  width: 24.w,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const Text(
+                      Text(
                         "< hr color\n \"blue\" >",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
+                            fontSize: 13.sp, fontWeight: FontWeight.w500),
                       ),
                       Checkbox(
                         value: checkBoxValues[0],
@@ -177,15 +203,15 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                 ),
                 Container(
                   color: Colors.deepOrangeAccent.withOpacity(0.6),
-                  height: 110,
-                  width: 95,
+                  height: 15.h,
+                  width: 24.w,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const Text(
+                      Text(
                         "      < hr\n color blue>",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
+                            fontSize: 13.sp, fontWeight: FontWeight.w500),
                       ),
                       Checkbox(
                         value: checkBoxValues[1],
@@ -206,15 +232,15 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                 ),
                 Container(
                   color: Colors.deepOrangeAccent.withOpacity(0.6),
-                  height: 110,
-                  width: 95,
+                  height: 15.h,
+                  width: 24.w,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const Text(
+                      Text(
                         "< hr color\n = \"blue\" >",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
+                            fontSize: 13.sp, fontWeight: FontWeight.w500),
                       ),
                       Checkbox(
                         value: checkBoxValues[2],
@@ -235,15 +261,15 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                 ),
                 Container(
                   color: Colors.deepOrangeAccent.withOpacity(0.6),
-                  height: 110,
-                  width: 90,
+                  height: 15.h,
+                  width: 24.w,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const Text(
+                      Text(
                         "< hr color\n = blue >",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
+                            fontSize: 13.sp, fontWeight: FontWeight.w500),
                       ),
                       Checkbox(
                         value: checkBoxValues[3],
@@ -264,16 +290,7 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                 ),
               ],
             ),
-            const SizedBox(height: 20.0),
-            if (finished)
-              const Center(
-                child: Icon(
-                  Icons.check_circle,
-                  size: 50,
-                  color: Colors.green,
-                ),
-              ),
-            const SizedBox(height: 40.0),
+            SizedBox(height: 12.h),
             if (finished)
               ElevatedButton(
                 onPressed: () {
@@ -284,10 +301,10 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                           builder: (context) => const LessonFiveStudy()));
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.black, minimumSize: const Size(300, 60)),
-                child: const Text(
+                    primary: Colors.black, minimumSize: Size(80.w, 8.h)),
+                child: Text(
                   "التالي",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20.sp),
                 ),
               ),
           ],

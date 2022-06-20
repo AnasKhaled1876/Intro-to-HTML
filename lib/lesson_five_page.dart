@@ -31,7 +31,7 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
           children: [
             SizedBox(width: 21.w,),
             const Text("الدرس الخامس"),
-            SizedBox(width: 15.w,),
+            SizedBox(width: 12.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
@@ -161,7 +161,7 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
           children: [
             SizedBox(width: 21.w,),
             const Text("النشاط"),
-            SizedBox(width: 31.w,),
+            SizedBox(width: 28.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(

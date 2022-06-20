@@ -54,7 +54,7 @@ class IntroWidget extends StatelessWidget {
         Text(
           "مرحبا بك يا صديقي سنتعلم سويا آساسيات برمجة الويب \n  \t\t\t\t\t\t\t\t\t\t\t لبدء التعلم اضغط على زر الدخول ",
           style: TextStyle(
-              fontSize: 13.0.sp,
+              fontSize: 11.0.sp,
               color: Colors.redAccent,
               fontWeight: FontWeight.bold),
         ),

@@ -28,7 +28,7 @@ class _LessonTwoStudyState extends State<LessonTwoStudy> {
           children: [
             SizedBox(width: 20.w,),
             const Text("الدرس الثاني"),
-            SizedBox(width: 21.w,),
+            SizedBox(width: 17.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
@@ -64,6 +64,7 @@ class _LessonTwoStudyState extends State<LessonTwoStudy> {
             Center(
               child: Image.asset("assets/lesson2.png"),
             ),
+            SizedBox(height: 12.h,),
             Center(
               child: ElevatedButton(
                 onPressed: () {
@@ -151,7 +152,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
           children: [
             SizedBox(width: 25.w,),
             const Text("النشاط"),
-            SizedBox(width: 27.w,),
+            SizedBox(width: 23.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
@@ -168,8 +169,8 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 1.h),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(height: 3.h,),
             Align(
               alignment: Alignment.centerRight,
               child: Text(
@@ -383,7 +384,7 @@ class DragTargetContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 24.w,
+      width: 27.w,
       height: 5.h,
       child: Align(
         child: Text(

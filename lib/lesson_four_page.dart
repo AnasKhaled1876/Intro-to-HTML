@@ -25,7 +25,7 @@ class LessonFourStudy extends StatelessWidget {
           children: [
             SizedBox(width: 21.w,),
             const Text("الدرس الرابع"),
-            SizedBox(width: 19.w,),
+            SizedBox(width: 16.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(

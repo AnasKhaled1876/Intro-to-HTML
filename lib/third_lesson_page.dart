@@ -24,7 +24,7 @@ class LessonThreeStudy extends StatelessWidget {
           children: [
             SizedBox(width: 21.w,),
             const Text("الدرس الثالث"),
-            SizedBox(width: 19.w,),
+            SizedBox(width: 16.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
@@ -352,7 +352,7 @@ class GreenRow extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           input,
-          style: TextStyle(fontSize: 16.sp),
+          style: TextStyle(fontSize: 13.sp),
         ),
       ),
     );
@@ -377,7 +377,7 @@ class BlackRow extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           input,
-          style: TextStyle(fontSize: 16.0.sp),
+          style: TextStyle(fontSize: 13.0.sp,color: Colors.white),
         ),
       ),
     );
@@ -413,7 +413,7 @@ class AnswerItem extends StatelessWidget {
           child: Text(
         item,
         style: TextStyle(
-            fontSize: 15.0.sp,
+            fontSize: 13.0.sp,
             decoration: TextDecoration.none,
             color: Colors.white),
       )),

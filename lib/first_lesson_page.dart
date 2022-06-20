@@ -43,7 +43,7 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
           children: [
             SizedBox(width: 20.w,),
             const Text("الدرس الأول"),
-            SizedBox(width: 21.w,),
+            SizedBox(width: 17.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
@@ -92,7 +92,7 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
                       height: 5.h,
                       child: Text(
                         answer2,
-                        style:  TextStyle(fontSize: 23.0.sp),
+                        style:  TextStyle(fontSize: 20.0.sp),
                       ),
                     ),
                   ),
@@ -111,7 +111,7 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
                   "في تصميم",
                   textAlign: TextAlign.right,
                   textDirection: TextDirection.rtl,
-                  style: TextStyle(fontSize: 18.sp, color: Colors.red[900]),
+                  style: TextStyle(fontSize: 14.sp, color: Colors.red[900]),
                 ),
               ),
               Column(
@@ -132,7 +132,7 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
                       height: 5.h,
                       child: Text(
                         answer1,
-                        style:  TextStyle(fontSize: 23.0.sp),
+                        style:  TextStyle(fontSize: 20.0.sp),
                       ),
                     ),
                   ),
@@ -145,14 +145,11 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
                       )),
                 ],
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  "تستخدم لغة ",
-                  textAlign: TextAlign.right,
-                  textDirection: TextDirection.rtl,
-                  style: TextStyle(fontSize: 18.sp, color: Colors.red[900]),
-                ),
+              Text(
+                "تستخدم لغة ",
+                textAlign: TextAlign.right,
+                textDirection: TextDirection.rtl,
+                style: TextStyle(fontSize: 15.sp, color: Colors.red[900]),
               ),
             ],
           ),
@@ -163,7 +160,7 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
             alignment: Alignment.bottomRight,
             child: Text(
               ".المواقع الالكترونية",
-              style: TextStyle(fontSize: 23.0, color: Colors.red[900]),
+              style: TextStyle(fontSize: 18.sp, color: Colors.red[900]),
             ),
           ),
           SizedBox(height: 15.h),
@@ -175,8 +172,8 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
               const DraggableItem(item: "HTML"),
             ],
           ),
-          const SizedBox(
-            height: 30.0,
+          SizedBox(
+            height: 3.h,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

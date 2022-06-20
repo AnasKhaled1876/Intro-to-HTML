@@ -23,7 +23,7 @@ class LessonSixStudy extends StatelessWidget {
           children: [
             SizedBox(width: 21.w,),
             const Text("الدرس السادس"),
-            SizedBox(width: 16.w,),
+            SizedBox(width: 11.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
@@ -95,7 +95,7 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
           children: [
             SizedBox(width: 26.w,),
             const Text("النشاط"),
-            SizedBox(width: 25.w,),
+            SizedBox(width: 22.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
@@ -142,7 +142,7 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                             answer2,
                             softWrap: true,
                             style: TextStyle(
-                                fontSize: 17.sp, fontWeight: FontWeight.bold),
+                                fontSize: 14.sp, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -164,7 +164,7 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                     textAlign: TextAlign.right,
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
-                        fontSize: 17.sp,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.red[900]),
                   ),
@@ -200,7 +200,7 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                             answer1,
                             softWrap: true,
                             style: TextStyle(
-                                fontSize: 17.sp, fontWeight: FontWeight.bold),
+                                fontSize: 14.sp, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -222,7 +222,7 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                         color: Colors.red[900],
-                        fontSize: 17.sp,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -311,7 +311,7 @@ class MatchItemLevelSIx extends StatelessWidget {
         child: Text(
           item,
           style: TextStyle(
-              fontSize: 18.sp,
+              fontSize: 15.sp,
               decoration: TextDecoration.none,
               fontWeight: FontWeight.bold,
               color: Colors.white),

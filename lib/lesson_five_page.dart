@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/lesson_six_page.dart';
-import 'package:intro_to_html/lessons_page.dart';
-
+import 'package:sizer/sizer.dart';
 import 'first_lesson_page.dart';
 import 'home_page.dart';
 import 'main_page.dart';
@@ -24,17 +23,30 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MainPage()));
+            Navigator.pop(context);
           },
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("الدرس الخامس"),
+        title: Row(
+          children: [
+            SizedBox(width: 21.w,),
+            const Text("الدرس الخامس"),
+            SizedBox(width: 15.w,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MainPage()));
+                },
+                icon: const Icon(Icons.home),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+        margin: EdgeInsets.symmetric(horizontal: 1.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
@@ -68,17 +80,15 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.black, minimumSize: const Size(300, 60)),
-                child: const Text(
+                    primary: Colors.black, minimumSize: Size(80.w, 8.h)),
+                child: Text(
                   "النشاط",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20.sp),
                 ),
               ),
             ),
-            const Expanded(
-              child: SizedBox(
-                height: 40,
-              ),
+            SizedBox(
+              height: 8.h,
             )
           ],
         ),
@@ -124,9 +134,9 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             DraggableItem(item: headingsNo[i]),
-            const SizedBox(width: 25.0),
+            SizedBox(width: 5.w),
             DraggableItem(item: headingsNo[i + 1]),
-            const SizedBox(width: 25.0),
+            SizedBox(width: 5.w),
             DraggableItem(item: headingsNo[i + 2]),
           ],
         ),
@@ -143,40 +153,53 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MainPage()));
+            Navigator.pop(context);
           },
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("النشاط"),
+        title: Row(
+          children: [
+            SizedBox(width: 21.w,),
+            const Text("النشاط"),
+            SizedBox(width: 31.w,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MainPage()));
+                },
+                icon: const Icon(Icons.home),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Container(
-        margin: const EdgeInsets.all(20.0),
+        margin: EdgeInsets.symmetric(horizontal: 0.5.h),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Align(
+            SizedBox(height: 5.h,),
+            Align(
               alignment: Alignment.centerRight,
               child: Text(
                 "قم بترتيب العناويين التالية حسب الترتيب تنازلي ( من الخط الكبير للصغير):",
                 textDirection: TextDirection.rtl,
-                style: TextStyle(fontSize: 21.0, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18.0.sp, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(height: 40,),
+            SizedBox(height: 4.h,),
             Container(
               color: Colors.blue.withOpacity(0.3),
-              width: 195,
+              width: 50.w,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Row(
                     children: <Widget>[
                       HeadingsBox(headings[0]),
-                      const SizedBox(
-                        width: 30,
+                      SizedBox(
+                        width: 10.w,
                       ),
                       DragTarget<String>(
                         onAccept: (data) => setState(() {
@@ -185,22 +208,15 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                             finished = true;
                           }
                         }),
-                        builder: (context, _, __) => Container(
-                          width: 90,
-                          height: 40,
-                          child: Text(
-                            inputs[0],
-                            style: const TextStyle(fontSize: 20.0),
-                          ),
-                        ),
+                        builder: (context, _, __) => DragTargetLevelSix(input: inputs[0]),
                       ),
                     ],
                   ),
                   Row(
                     children: <Widget>[
                       HeadingsBox(headings[1]),
-                      const SizedBox(
-                        width: 30,
+                      SizedBox(
+                        width: 10.w,
                       ),
                       DragTarget<String>(
                         onAccept: (data) => setState(() {
@@ -209,22 +225,15 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                             finished = true;
                           }
                         }),
-                        builder: (context, _, __) => Container(
-                          width: 90,
-                          height: 40,
-                          child: Text(
-                            inputs[1],
-                            style: const TextStyle(fontSize: 20.0),
-                          ),
-                        ),
+                        builder: (context, _, __) => DragTargetLevelSix(input: inputs[1]),
                       ),
                     ],
                   ),
                   Row(
                     children: <Widget>[
                       HeadingsBox(headings[2]),
-                      const SizedBox(
-                        width: 30,
+                      SizedBox(
+                        width: 10.w,
                       ),
                       DragTarget<String>(
                         onAccept: (data) => setState(() {
@@ -233,22 +242,15 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                             finished = true;
                           }
                         }),
-                        builder: (context, _, __) => Container(
-                          width: 90,
-                          height: 40,
-                          child: Text(
-                            inputs[2],
-                            style: const TextStyle(fontSize: 20.0),
-                          ),
-                        ),
+                        builder: (context, _, __) => DragTargetLevelSix(input: inputs[2]),
                       ),
                     ],
                   ),
                   Row(
                     children: <Widget>[
                       HeadingsBox(headings[3]),
-                      const SizedBox(
-                        width: 30,
+                      SizedBox(
+                        width: 10.w,
                       ),
                       DragTarget<String>(
                         onAccept: (data) => setState(() {
@@ -257,22 +259,15 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                             finished = true;
                           }
                         }),
-                        builder: (context, _, __) => Container(
-                          width: 90,
-                          height: 40,
-                          child: Text(
-                            inputs[3],
-                            style: const TextStyle(fontSize: 20.0),
-                          ),
-                        ),
+                        builder: (context, _, __) => DragTargetLevelSix(input: inputs[3]),
                       ),
                     ],
                   ),
                   Row(
                     children: <Widget>[
                       HeadingsBox(headings[4]),
-                      const SizedBox(
-                        width: 30,
+                      SizedBox(
+                        width: 10.w,
                       ),
                       DragTarget<String>(
                         onAccept: (data) => setState(() {
@@ -281,22 +276,15 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                             finished = true;
                           }
                         }),
-                        builder: (context, _, __) => Container(
-                          width: 90,
-                          height: 40,
-                          child: Text(
-                            inputs[4],
-                            style: const TextStyle(fontSize: 20.0),
-                          ),
-                        ),
+                        builder: (context, _, __) => DragTargetLevelSix(input: inputs[4]),
                       ),
                     ],
                   ),
                   Row(
                     children: <Widget>[
                       HeadingsBox(headings[5]),
-                      const SizedBox(
-                        width: 30,
+                      SizedBox(
+                        width: 10.w,
                       ),
                       DragTarget<String>(
                         onAccept: (data) => setState(() {
@@ -305,35 +293,20 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                             finished = true;
                           }
                         }),
-                        builder: (context, _, __) => Container(
-                          width: 90,
-                          height: 40,
-                          child: Text(
-                            inputs[5],
-                            style: const TextStyle(fontSize: 20.0),
-                          ),
-                        ),
+                        builder: (context, _, __) => DragTargetLevelSix(input: inputs[5]),
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: 4.h,
             ),
             Column(
               children: fillRows(),
             ),
-            const SizedBox(height: 20.0),
-            if (finished)
-              const Center(
-                child: Icon(
-                  Icons.check_circle,
-                  size: 50,
-                  color: Colors.green,
-                ),
-              ),
+            SizedBox(height: 5.h),
             if (finished)
               ElevatedButton(
                 onPressed: () {
@@ -342,13 +315,37 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                       MaterialPageRoute(builder: (context) => const LessonSixStudy()));
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.black, minimumSize: const Size(300, 40)),
-                child: const Text(
+                    primary: Colors.black, minimumSize: Size(80.w, 8.h)),
+                child: Text(
                   "التالي",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20.sp),
                 ),
               )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class DragTargetLevelSix extends StatelessWidget {
+  const DragTargetLevelSix({
+    Key? key,
+    required this.input,
+  }) : super(key: key);
+
+  final String input;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 20.w,
+      height: 5.h,
+      child: Align(
+        alignment: Alignment.center,
+        child: Text(
+          input,
+          style: TextStyle(fontSize: 20.0.sp),
         ),
       ),
     );
@@ -371,13 +368,13 @@ class HeadingsBox extends StatelessWidget {
           Radius.circular(9),
         ),
       ),
-      width: 70,
-      height: 40,
+      width: 15.w,
+      height: 5.h,
       child: Center(
         child: Text(
           heading,
-          style: const TextStyle(
-            fontSize: 27.0,
+          style: TextStyle(
+            fontSize: 22.0.sp,
           ),
         ),
       ),

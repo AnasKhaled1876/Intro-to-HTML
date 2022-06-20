@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/home_page.dart';
+import 'package:sizer/sizer.dart';
 
 import 'lesson_four_page.dart';
 import 'main_page.dart';
@@ -15,17 +16,30 @@ class LessonThreeStudy extends StatelessWidget {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MainPage()));
+            Navigator.pop(context);
           },
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("الدرس الثالث"),
+        title: Row(
+          children: [
+            SizedBox(width: 21.w,),
+            const Text("الدرس الثالث"),
+            SizedBox(width: 19.w,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MainPage()));
+                },
+                icon: const Icon(Icons.home),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+        margin: EdgeInsets.symmetric(horizontal: 2.0.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
@@ -36,7 +50,7 @@ class LessonThreeStudy extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
                     color: Colors.red[900],
-                    fontSize: 25.0,
+                    fontSize: 23.0.sp,
                     decoration: TextDecoration.underline),
               ),
             ),
@@ -51,10 +65,10 @@ class LessonThreeStudy extends StatelessWidget {
                         builder: (context) => const LessonThreeActivity()));
               },
               style: ElevatedButton.styleFrom(
-                  primary: Colors.black, minimumSize: const Size(300, 60)),
-              child: const Text(
+                  primary: Colors.black, minimumSize:  Size(80.w, 7.h)),
+              child: Text(
                 "النشاط",
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20.sp),
               ),
             )
           ],
@@ -104,16 +118,16 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
     List<Widget> myChoices = [];
     for (int i = 0; i < headings.length; i += 3) {
       if(i==3) {
-        myChoices.add(const SizedBox(height: 20,));
+        myChoices.add( SizedBox(height: 4.h,));
       }
       myChoices.add(
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Dragi(headings[i]),
-            const SizedBox(width: 30.0),
+            SizedBox(width: 8.0.w),
             Dragi(headings[i + 1]),
-            const SizedBox(width: 30.0),
+            SizedBox(width: 8.0.w),
             Dragi(headings[i + 2]),
           ],
         ),
@@ -130,33 +144,46 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MainPage()));
+            Navigator.pop(context);
           },
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("النشاط"),
+        title: Row(
+          children: [
+            SizedBox(width: 24.w,),
+            const Text("النشاط"),
+            SizedBox(width: 25.w,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MainPage()));
+                },
+                icon: const Icon(Icons.home),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+        margin: EdgeInsets.symmetric(horizontal: 1.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const SizedBox(
-              height: 40,
+            SizedBox(
+              height: 4.h,
             ),
-            const Align(
+             Align(
               alignment: Alignment.centerRight,
               child: Text(
                 "أمامك مجموعة من المربعات الفارغة انظري اسفل الاحجية ستجدين مجموعة من الاكواد قومي بترتيبها بطريقة السحب والافلات.",
                 textDirection: TextDirection.rtl,
-                style: TextStyle(fontSize: 21.0, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 17.0.sp, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(
-              height: 45,
+            SizedBox(
+              height: 5.h,
             ),
             Center(
               child: Row(
@@ -164,13 +191,13 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                 children: <Widget>[
                   Container(
                     color: Colors.black,
-                    width: 30,
-                    height: 50,
-                    child: const Center(
+                    width: 10.w,
+                    height: 7.h,
+                    child: Center(
                       child: Text(
                         "1",
                         style: TextStyle(
-                            fontSize: 20.0,
+                            fontSize: 20.0.sp,
                             decoration: TextDecoration.none,
                             color: Colors.white),
                       ),
@@ -187,18 +214,7 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                         finished=false;
                       }
                     }),
-                    builder: (context, _, __) => Container(
-                      color: Colors.black.withOpacity(0.7),
-                      width: 100,
-                      height: 50,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          inputs[0],
-                          style: const TextStyle(fontSize: 20.0),
-                        ),
-                      ),
-                    ),
+                    builder: (context, _, __) => BlackRow(input: inputs[0]),
                   ),
                   DragTarget<String>(
                     onAccept: (data) => setState(() {
@@ -211,18 +227,7 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                         finished=false;
                       }
                     }),
-                    builder: (context, _, __) => Container(
-                      color: Colors.black.withOpacity(0.7),
-                      width: 100,
-                      height: 50,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          inputs[1],
-                          style: const TextStyle(fontSize: 20.0),
-                        ),
-                      ),
-                    ),
+                    builder: (context, _, __) => BlackRow(input: inputs[1]),
                   ),
                   DragTarget<String>(
                     onAccept: (data) => setState(() {
@@ -235,37 +240,26 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                         finished=false;
                       }
                     }),
-                    builder: (context, _, __) => Container(
-                      color: Colors.black.withOpacity(0.7),
-                      width: 100,
-                      height: 50,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          inputs[2],
-                          style: const TextStyle(fontSize: 20.0),
-                        ),
-                      ),
-                    ),
+                    builder: (context, _, __) => BlackRow(input: inputs[2]),
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 50,
+            SizedBox(
+              height: 2.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Container(
                   color: Colors.red,
-                  width: 30,
-                  height: 50,
-                  child: const Center(
+                  width: 10.w,
+                  height: 7.h,
+                  child: Center(
                     child: Text(
                       "2",
                       style: TextStyle(
-                          fontSize: 20.0,
+                          fontSize: 20.0.sp,
                           decoration: TextDecoration.none,
                           color: Colors.white),
                     ),
@@ -282,18 +276,7 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                       finished=false;
                     }
                   }),
-                  builder: (context, _, __) => Container(
-                    color: Colors.red.withOpacity(0.7),
-                    width: 100,
-                    height: 50,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        inputs[3],
-                        style: const TextStyle(fontSize: 20.0),
-                      ),
-                    ),
-                  ),
+                  builder: (context, _, __) => GreenRow(input: inputs[3]),
                 ),
                 DragTarget<String>(
                   onAccept: (data) => setState(() {
@@ -306,18 +289,7 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                       finished=false;
                     }
                   }),
-                  builder: (context, _, __) => Container(
-                    color: Colors.red.withOpacity(0.7),
-                    width: 100,
-                    height: 50,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        inputs[4],
-                        style: const TextStyle(fontSize: 20.0),
-                      ),
-                    ),
-                  ),
+                  builder: (context, _, __) => GreenRow(input: inputs[4]),
                 ),
                 DragTarget<String>(
                   onAccept: (data) => setState(() {
@@ -330,36 +302,17 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                         finished=false;
                       }
                   }),
-                  builder: (context, _, __) => Container(
-                    color: Colors.red.withOpacity(0.7),
-                    width: 100,
-                    height: 50,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        inputs[5],
-                        style: const TextStyle(fontSize: 20.0),
-                      ),
-                    ),
-                  ),
+                  builder: (context, _, __) => GreenRow(input: inputs[5]),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 50,
+            SizedBox(
+              height: 6.h,
             ),
             Column(crossAxisAlignment: CrossAxisAlignment.center,
               children: fillRows(),
             ),
-            const SizedBox(height: 20.0),
-            if (finished)
-              const Center(
-                child: Icon(
-                  Icons.check_circle,
-                  size: 50,
-                  color: Colors.green,
-                ),
-              ),
+            SizedBox(height: 8.h),
             if (finished)
               ElevatedButton(
                 onPressed: () {
@@ -368,13 +321,63 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                       MaterialPageRoute(builder: (context) => const LessonFourStudy()));
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.black, minimumSize: const Size(300, 40)),
-                child: const Text(
+                    primary: Colors.black, minimumSize: Size(60.w, 7.h)),
+                child: Text(
                   "التالي",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20.sp),
                 ),
               ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class GreenRow extends StatelessWidget {
+  const GreenRow({
+    Key? key,
+    required this.input,
+  }) : super(key: key);
+
+  final String input;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.red.withOpacity(0.7),
+      width: 26.w,
+      height: 7.h,
+      child: Align(
+        alignment: Alignment.center,
+        child: Text(
+          input,
+          style: TextStyle(fontSize: 16.sp),
+        ),
+      ),
+    );
+  }
+}
+
+class BlackRow extends StatelessWidget {
+  const BlackRow({
+    Key? key,
+    required this.input,
+  }) : super(key: key);
+
+  final String input;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.black.withOpacity(0.7),
+      width: 26.w,
+      height: 7.h,
+      child: Align(
+        alignment: Alignment.center,
+        child: Text(
+          input,
+          style: TextStyle(fontSize: 16.0.sp),
         ),
       ),
     );
@@ -404,15 +407,15 @@ class AnswerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.green.withOpacity(0.8),
-      width: 100,
-      height: 50,
+      width: 25.w,
+      height: 7.h,
       child: Center(
           child: Text(
         item,
-        style: const TextStyle(
-            fontSize: 18.0,
+        style: TextStyle(
+            fontSize: 15.0.sp,
             decoration: TextDecoration.none,
-            color: Colors.amber),
+            color: Colors.white),
       )),
     );
   }

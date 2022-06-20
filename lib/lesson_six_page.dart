@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/lessons_page.dart';
-
-import 'first_lesson_page.dart';
+import 'package:sizer/sizer.dart';
 import 'home_page.dart';
 import 'main_page.dart';
 
@@ -16,18 +15,31 @@ class LessonSixStudy extends StatelessWidget {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MainPage()));
+            Navigator.pop(context);
           },
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("الدرس السادس"),
+        title: Row(
+          children: [
+            SizedBox(width: 21.w,),
+            const Text("الدرس السادس"),
+            SizedBox(width: 16.w,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MainPage()));
+                },
+                icon: const Icon(Icons.home),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Container(
         color: Colors.white,
-        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+        margin: EdgeInsets.symmetric(horizontal: 2.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
@@ -42,10 +54,10 @@ class LessonSixStudy extends StatelessWidget {
                         builder: (context) => const LessonSixActivity()));
               },
               style: ElevatedButton.styleFrom(
-                  primary: Colors.black, minimumSize: const Size(300, 60)),
-              child: const Text(
+                  primary: Colors.black, minimumSize: Size(80.w, 8.h)),
+              child: Text(
                 "النشاط",
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20.sp),
               ),
             )
           ],
@@ -63,7 +75,8 @@ class LessonSixActivity extends StatefulWidget {
 }
 
 class _LessonSixActivityState extends State<LessonSixActivity> {
-  String answer = "";
+  String answer1 = "";
+  String answer2 = "";
   bool finished = false;
 
   @override
@@ -74,62 +87,62 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
         backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const MainPage()));
+            Navigator.pop(context);
           },
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("الدرس السادس"),
+        title: Row(
+          children: [
+            SizedBox(width: 26.w,),
+            const Text("النشاط"),
+            SizedBox(width: 25.w,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MainPage()));
+                },
+                icon: const Icon(Icons.home),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Container(
-        margin: const EdgeInsets.all(10),
+        margin: EdgeInsets.all(1.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 40,
-            ),
-            Row(
-              children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    "كود <p>...<p> هو كود مزدوج له بداية <p> ",
-                    textAlign: TextAlign.right,
-                    textDirection: TextDirection.rtl,
-                    style: TextStyle(fontSize: 23.0, color: Colors.red[900]),
-                  ),
-                ),
-              ],
+            SizedBox(
+              height: 3.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
+              children: [
                 Column(
-                  children: <Widget>[
+                  children: [
                     DragTarget<String>(
                       onAccept: (data) => setState(
                         () {
-                          answer = data;
-                          if (answer == "فقرة") {
+                          answer2 = data;
+                          if (answer1 == "فقرة" && answer2 == "مزدوج") {
                             finished = true;
+                          } else {
+                            finished = false;
                           }
-                          else
-                            {
-                              finished=false;
-                            }
                         },
                       ),
                       builder: (context, _, __) => SizedBox(
-                        width: 100,
-                        height: 30,
+                        width: 26.w,
+                        height: 4.h,
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: Text(
-                            answer,
+                            answer2,
                             softWrap: true,
-                            style: const TextStyle(fontSize: 20.0,),
+                            style: TextStyle(
+                                fontSize: 17.sp, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -144,45 +157,99 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                     ),
                   ],
                 ),
-                 Align(
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "كود <p>ــــــ<p> هو كود ",
+                    textAlign: TextAlign.right,
+                    textDirection: TextDirection.rtl,
+                    style: TextStyle(
+                        fontSize: 17.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red[900]),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 1.h,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    DragTarget<String>(
+                      onAccept: (data) => setState(
+                        () {
+                          answer1 = data;
+                          if (answer1 == "فقرة" && answer2 == "مزدوج") {
+                            finished = true;
+                          } else {
+                            finished = false;
+                          }
+                        },
+                      ),
+                      builder: (context, _, __) => SizedBox(
+                        width: 28.w,
+                        height: 4.h,
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Text(
+                            answer1,
+                            softWrap: true,
+                            style: TextStyle(
+                                fontSize: 17.sp, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        "..................",
+                        style:
+                            TextStyle(fontSize: 20.0, color: Colors.red[900]),
+                      ),
+                    ),
+                  ],
+                ),
+                Align(
                   alignment: Alignment.bottomRight,
-                  child: Text("وله نهاية <p/> يستخدم لاإضافة" ,
-                  textDirection: TextDirection.rtl,
-                  style: TextStyle(color: Colors.red[900],fontSize: 23.0),),
+                  child: Text(
+                    "وله نهاية <p/> يستخدم لإضافة",
+                    textDirection: TextDirection.rtl,
+                    style: TextStyle(
+                        color: Colors.red[900],
+                        fontSize: 17.sp,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 150),
+            SizedBox(height: 13.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                DraggableItem(item: "عنوان رئيسي"),
-                SizedBox(width: 30.0),
-                DraggableItem(item: "قائمة"),
+              children: <Widget>[
+                const DraggableItemLevelSix(item: "عنوان رئيسي"),
+                SizedBox(width: 10.w),
+                const DraggableItemLevelSix(item: "مزدوج"),
               ],
             ),
-            const SizedBox(
-              height: 30.0,
+            SizedBox(
+              height: 3.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                DraggableItem(item: "صورة"),
-                SizedBox(width: 30.0),
-                DraggableItem(item: "فقرة"),
+              children: <Widget>[
+                const DraggableItemLevelSix(item: "مفرد"),
+                SizedBox(width: 10.w),
+                const DraggableItemLevelSix(item: "فقرة"),
               ],
             ),
-            const SizedBox(height: 60.0),
-            if (finished)
-              const Center(
-                child: Icon(
-                  Icons.check_circle,
-                  size: 50,
-                  color: Colors.green,
-                ),
-              ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: 20.h,
             ),
             if (finished)
               Center(
@@ -195,14 +262,59 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                             builder: (context) => const LessonsPage()));
                   },
                   style: ElevatedButton.styleFrom(
-                      primary: Colors.black, minimumSize: const Size(300, 60)),
-                  child: const Text(
+                      primary: Colors.black, minimumSize: Size(80.w, 8.h)),
+                  child: Text(
                     "التالي",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20.sp),
                   ),
                 ),
               )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class DraggableItemLevelSix extends StatelessWidget {
+  final String item;
+
+  const DraggableItemLevelSix({super.key, required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return Draggable<String>(
+      data: item,
+      feedback: MatchItemLevelSIx(
+        item: item,
+      ),
+      childWhenDragging: null,
+      child: MatchItemLevelSIx(
+        item: item,
+      ),
+    );
+  }
+}
+
+class MatchItemLevelSIx extends StatelessWidget {
+  final String item;
+
+  const MatchItemLevelSIx({super.key, required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blueGrey,
+      width: 32.w,
+      height: 6.h,
+      child: Center(
+        child: Text(
+          item,
+          style: TextStyle(
+              fontSize: 18.sp,
+              decoration: TextDecoration.none,
+              fontWeight: FontWeight.bold,
+              color: Colors.white),
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/first_lesson_page.dart';
 import 'package:intro_to_html/lesson_five_page.dart';
@@ -20,7 +21,7 @@ class _LessonsPageState extends State<LessonsPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.deepOrangeAccent.withOpacity(0.8),
+        backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
@@ -33,17 +34,17 @@ class _LessonsPageState extends State<LessonsPage> {
         margin: EdgeInsets.symmetric(horizontal: 3.h),
         child: ListView(
           children: <Widget>[
-             SizedBox(height: 3.h,),
+            SizedBox(height: 3.h,),
             LessonTile("الدرس الأول", const LessonOneStudy()),
-             SizedBox(height: 3.h,),
+            SizedBox(height: 3.h,),
             LessonTile("الدرس الثاني", const LessonTwoStudy()),
-             SizedBox(height: 3.h,),
+            SizedBox(height: 3.h,),
             LessonTile("الدرس الثالث", const LessonThreeStudy()),
-             SizedBox(height: 3.h,),
+            SizedBox(height: 3.h,),
             LessonTile("الدرس الرابع", const LessonFourStudy()),
-             SizedBox(height: 3.h,),
+            SizedBox(height: 3.h,),
             LessonTile("الدرس الخامس", const LessonFiveStudy()),
-             SizedBox(height: 3.h,),
+            SizedBox(height: 3.h,),
             LessonTile("الدرس السادس", const LessonSixStudy()),
           ],
         ),
@@ -62,16 +63,18 @@ class LessonTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => widget));
       },
       style: ElevatedButton.styleFrom(
-          primary: Colors.blueGrey.withOpacity(0.6), minimumSize: const Size(100, 60)),
+          primary: Colors.blueGrey.withOpacity(0.6),
+          minimumSize: Size(80.w, 6.h)),
       child: ListTile(
         title: Text(
           lessonNumber,
           textDirection: TextDirection.rtl,
           style: const TextStyle(
-            color: Colors.white,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 20.0
           ),

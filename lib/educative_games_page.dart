@@ -4,6 +4,7 @@ import 'package:intro_to_html/lesson_four_page.dart';
 import 'package:intro_to_html/lesson_six_page.dart';
 import 'package:intro_to_html/second_lesson.dart';
 import 'package:intro_to_html/third_lesson_page.dart';
+import 'package:sizer/sizer.dart';
 
 import 'lesson_five_page.dart';
 import 'lessons_page.dart';
@@ -31,20 +32,20 @@ class _EducativeGamesState extends State<EducativeGames> {
         title: const Text("دروسك"),
       ),
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20),
+        margin: EdgeInsets.symmetric(horizontal: 2.h),
         child: ListView(
           children: <Widget>[
-            const SizedBox(height: 20,),
+            SizedBox(height: 3.h,),
             LessonTile("نشاط الدرس الأول", const LessonOneActivity()),
-            const SizedBox(height: 20,),
+            SizedBox(height: 3.h,),
             LessonTile("نشاط الدرس الثاني", const LessonTwoActivity()),
-            const SizedBox(height: 20,),
+            SizedBox(height: 3.h,),
             LessonTile("نشاط الدرس الثالث", const LessonThreeActivity()),
-            const SizedBox(height: 20,),
+            SizedBox(height: 3.h,),
             LessonTile("نشاط الدرس الرابع", const LessonFourActivity()),
-            const SizedBox(height: 20,),
+            SizedBox(height: 3.h,),
             LessonTile("نشاط الدرس الخامس", const LessonFiveActivity()),
-            const SizedBox(height: 20,),
+            SizedBox(height: 3.h,),
             LessonTile("نشاط الدرس السادس", const LessonSixActivity()),
           ],
         ),

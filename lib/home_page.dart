@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
           ElevatedButton(
             onPressed: () async {
               await initialize();
-              if (username != "" && age != "") {
+              if (username != "" && age != "" && int.parse(age)<70 && int.parse(age)>10) {
                 HomePage.prefs.setString("name", username);
                 HomePage.prefs.setString("age", age);
                 HomePage.prefs.setInt("Level", 1);

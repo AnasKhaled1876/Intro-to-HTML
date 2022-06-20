@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/home_page.dart';
 import 'package:sizer/sizer.dart';
@@ -14,14 +13,14 @@ class IntroPage extends StatefulWidget {
 class _IntroPageState extends State<IntroPage> {
   bool welcomed = false;
 
-
-  void animateAfterWait(){
+  void animateAfterWait() {
     Timer(const Duration(seconds: 2), () {
-      setState((){
-        welcomed=true;
+      setState(() {
+        welcomed = true;
       });
     });
   }
+
   @override
   Widget build(BuildContext context) {
     animateAfterWait();
@@ -30,7 +29,8 @@ class _IntroPageState extends State<IntroPage> {
       firstChild: Center(child: Image.asset("assets/intro-pic.png")),
       duration: const Duration(seconds: 1),
       secondChild: const IntroWidget(),
-      crossFadeState: welcomed ? CrossFadeState.showSecond :CrossFadeState.showFirst,
+      crossFadeState:
+          welcomed ? CrossFadeState.showSecond : CrossFadeState.showFirst,
     ));
   }
 }
@@ -47,7 +47,11 @@ class IntroWidget extends StatelessWidget {
         SizedBox(
           height: 10.h,
         ),
-        Image.asset("assets/Welcome.png"),
+        SizedBox(
+          width: 100.w,
+          height: 60.h,
+          child: Image.asset("assets/Welcome.png"),
+        ),
         SizedBox(
           height: 5.h,
         ),

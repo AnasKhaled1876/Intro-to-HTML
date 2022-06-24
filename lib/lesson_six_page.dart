@@ -21,15 +21,21 @@ class LessonSixStudy extends StatelessWidget {
         ),
         title: Row(
           children: [
-            SizedBox(width: 21.w,),
+            SizedBox(
+              width: 21.w,
+            ),
             const Text("الدرس السادس"),
-            SizedBox(width: 11.w,),
+            SizedBox(
+              width: 11.w,
+            ),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MainPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MainPage()));
                 },
                 icon: const Icon(Icons.home),
               ),
@@ -43,8 +49,51 @@ class LessonSixStudy extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Center(
-              child: Image.asset("assets/lesson6.png"),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "الفقرات",
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                    fontSize: 22.sp,
+                    decoration: TextDecoration.underline,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red[900]),
+              ),
+            ),
+            Text(
+              " كود <p> .... </p> هو كود مزدوج له بداية <p> وله نهاية </p> يستخدم لكتابة اللفقرات داخل صفحة الويب ",
+              textDirection: TextDirection.rtl,
+              style: TextStyle(
+                  fontSize: 18.sp,
+                  color: Colors.black,
+                  letterSpacing: 1.2,
+                  fontWeight: FontWeight.w600),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "طريقة كتابة كود الفقرة",
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                    fontSize: 20.sp,
+                    decoration: TextDecoration.underline,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red[900]),
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                "<p>\nالفقرة\n</p>",
+                textAlign: TextAlign.center,
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                    fontSize: 18.sp,
+                    color: Colors.black,
+                    letterSpacing: 1.2,
+                    fontWeight: FontWeight.w600),
+              ),
             ),
             ElevatedButton(
               onPressed: () {
@@ -93,15 +142,21 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
         ),
         title: Row(
           children: [
-            SizedBox(width: 26.w,),
+            SizedBox(
+              width: 26.w,
+            ),
             const Text("النشاط"),
-            SizedBox(width: 22.w,),
+            SizedBox(
+              width: 22.w,
+            ),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MainPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MainPage()));
                 },
                 icon: const Icon(Icons.home),
               ),

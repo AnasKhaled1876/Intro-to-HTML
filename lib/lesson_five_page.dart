@@ -200,6 +200,7 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
           ],
         ),
       );
+      myChoices.add(SizedBox(height: 2.h,));
     }
     return myChoices;
   }

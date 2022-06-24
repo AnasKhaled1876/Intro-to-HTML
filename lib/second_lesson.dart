@@ -132,6 +132,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
           ],
         ),
       );
+      myChoices.add(SizedBox(height: 2.h,));
     }
     return myChoices;
   }
@@ -451,7 +452,10 @@ class MatchItemLevelTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blueGrey,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        color: Colors.blueGrey
+      ),
       width: 29.w,
       height: 4.h,
       child: Center(

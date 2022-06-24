@@ -16,6 +16,29 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
   bool firstPress = false;
   String buttonText = "تابع";
 
+  List<Widget> fillHeadingsText() {
+    List<Widget> headingTexts = [];
+    double font = 26.0;
+    for (int i = 1; i <= 6; i++) {
+      headingTexts.add(
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            "Heading $i",
+            textDirection: TextDirection.rtl,
+            style: TextStyle(
+                fontSize: font.sp,
+                color: Colors.red[900],
+                fontWeight: FontWeight.bold),
+          ),
+        ),
+      );
+      font -= 2.0;
+    }
+
+    return headingTexts;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,15 +53,21 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
         ),
         title: Row(
           children: [
-            SizedBox(width: 21.w,),
+            SizedBox(
+              width: 21.w,
+            ),
             const Text("الدرس الخامس"),
-            SizedBox(width: 12.w,),
+            SizedBox(
+              width: 12.w,
+            ),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MainPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MainPage()));
                 },
                 icon: const Icon(Icons.home),
               ),
@@ -51,46 +80,81 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
+            SizedBox(
+              height: 5.h,
+            ),
+            if (firstPress)
+              Text(
+                "طريقة كتابة العناوين",
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                    fontSize: 22.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red[900]),
+              ),
             if (!firstPress)
-              Expanded(
-                flex: 9,
-                child: Center(
-                  child: Image.asset("assets/lesson5_1.png"),
-                ),
-              )
-            else
+              Text(
+                "العناوين",
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                    fontSize: 22.sp,
+                    color: Colors.red[900],
+                    fontWeight: FontWeight.bold),
+              ),
+            if (!firstPress)
+              Text(
+                "كود <Hn> .... </Hn> هو كود مزدوج له بداية <Hn> وله نهاية </Hn> يستخدم لكتابة العنوان، وn تشير إلى الرقم الذي يعبر عن حجم الخط، حيث أن H1 أكبر حجما وH6 أقل حجما:",
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                    fontSize: 15.sp,
+                    color: Colors.black,
+                    letterSpacing: 1.2,
+                    fontWeight: FontWeight.w600),
+              ),
+            if (!firstPress)
+              Row(
+                children: [
+                  SizedBox(
+                    width: 2.w,
+                  ),
+                  Column(
+                    children: fillHeadingsText(),
+                  ),
+                ],
+              ),
+            if (firstPress)
               Expanded(
                 flex: 9,
                 child: Center(
                   child: Image.asset("assets/lesson5_2.png"),
                 ),
               ),
-            Expanded(
-              flex: 1,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (firstPress) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LessonFiveActivity()));
-                  } else {
-                    setState(() {
-                      firstPress = true;
-                      buttonText="النشاط";
-                    });
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.black, minimumSize: Size(80.w, 8.h)),
-                child: Text(
-                  buttonText,
-                  style: TextStyle(fontSize: 20.sp),
-                ),
+            SizedBox(
+              height: 4.h,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (firstPress) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LessonFiveActivity()));
+                } else {
+                  setState(() {
+                    firstPress = true;
+                    buttonText = "النشاط";
+                  });
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black, minimumSize: Size(80.w, 8.h)),
+              child: Text(
+                buttonText,
+                style: TextStyle(fontSize: 20.sp),
               ),
             ),
             SizedBox(
-              height: 8.h,
+              height: 5.h,
             )
           ],
         ),
@@ -107,16 +171,8 @@ class LessonFiveActivity extends StatefulWidget {
 }
 
 class _LessonFiveActivityState extends State<LessonFiveActivity> {
-
   List<String> headings = ["1", "2", "3", "4", "5", "6"];
-  List<String> headingsNo = [
-    "H1",
-    "H2",
-    "H3",
-    "H4",
-    "H5",
-    "H6"
-  ];
+  List<String> headingsNo = ["H1", "H2", "H3", "H4", "H5", "H6"];
   List<String> inputs = ["", "", "", "", "", ""];
   bool finished = false;
 
@@ -128,6 +184,7 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
     }
     return true;
   }
+
   List<Widget> fillRows() {
     List<Widget> myChoices = [];
     for (int i = 0; i < headingsNo.length; i += 3) {
@@ -161,15 +218,21 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
         ),
         title: Row(
           children: [
-            SizedBox(width: 21.w,),
+            SizedBox(
+              width: 21.w,
+            ),
             const Text("النشاط"),
-            SizedBox(width: 28.w,),
+            SizedBox(
+              width: 28.w,
+            ),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MainPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MainPage()));
                 },
                 icon: const Icon(Icons.home),
               ),
@@ -181,16 +244,21 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
         margin: EdgeInsets.symmetric(horizontal: 0.5.h),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 5.h,),
+            SizedBox(
+              height: 5.h,
+            ),
             Align(
               alignment: Alignment.centerRight,
               child: Text(
                 "قم بترتيب العناويين التالية حسب الترتيب تنازلي ( من الخط الكبير للصغير):",
                 textDirection: TextDirection.rtl,
-                style: TextStyle(fontSize: 18.0.sp, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(fontSize: 18.0.sp, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(height: 4.h,),
+            SizedBox(
+              height: 4.h,
+            ),
             Container(
               color: Colors.blue.withOpacity(0.3),
               width: 50.w,
@@ -210,7 +278,8 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                             finished = true;
                           }
                         }),
-                        builder: (context, _, __) => DragTargetLevelSix(input: inputs[0]),
+                        builder: (context, _, __) =>
+                            DragTargetLevelSix(input: inputs[0]),
                       ),
                     ],
                   ),
@@ -227,7 +296,8 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                             finished = true;
                           }
                         }),
-                        builder: (context, _, __) => DragTargetLevelSix(input: inputs[1]),
+                        builder: (context, _, __) =>
+                            DragTargetLevelSix(input: inputs[1]),
                       ),
                     ],
                   ),
@@ -244,7 +314,8 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                             finished = true;
                           }
                         }),
-                        builder: (context, _, __) => DragTargetLevelSix(input: inputs[2]),
+                        builder: (context, _, __) =>
+                            DragTargetLevelSix(input: inputs[2]),
                       ),
                     ],
                   ),
@@ -261,7 +332,8 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                             finished = true;
                           }
                         }),
-                        builder: (context, _, __) => DragTargetLevelSix(input: inputs[3]),
+                        builder: (context, _, __) =>
+                            DragTargetLevelSix(input: inputs[3]),
                       ),
                     ],
                   ),
@@ -278,7 +350,8 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                             finished = true;
                           }
                         }),
-                        builder: (context, _, __) => DragTargetLevelSix(input: inputs[4]),
+                        builder: (context, _, __) =>
+                            DragTargetLevelSix(input: inputs[4]),
                       ),
                     ],
                   ),
@@ -295,7 +368,8 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                             finished = true;
                           }
                         }),
-                        builder: (context, _, __) => DragTargetLevelSix(input: inputs[5]),
+                        builder: (context, _, __) =>
+                            DragTargetLevelSix(input: inputs[5]),
                       ),
                     ],
                   ),
@@ -313,8 +387,10 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
               ElevatedButton(
                 onPressed: () {
                   HomePage.checkLevel(5);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const LessonSixStudy()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LessonSixStudy()));
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Colors.black, minimumSize: Size(80.w, 8.h)),

@@ -208,21 +208,31 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
   }
 }
 
-class DraggableItem extends StatelessWidget {
+class DraggableItem extends StatefulWidget {
+  const DraggableItem({Key? key, required this.item}) : super(key: key);
   final String item;
+  @override
+  State<DraggableItem> createState() => _DraggableItemState();
+}
 
-  const DraggableItem({super.key, required this.item});
-
+class _DraggableItemState extends State<DraggableItem> {
   @override
   Widget build(BuildContext context) {
-    return Draggable<String>(
-      data: item,
-      feedback: MatchItem(item),
-      childWhenDragging: null,
-      child: MatchItem(item),
+
+    return Visibility(
+      visible: true,
+      child: Draggable<String>(
+        onDragCompleted: (){
+        },
+        data: widget.item,
+        feedback: MatchItem(widget.item),
+        childWhenDragging: null,
+        child: MatchItem(widget.item),
+      ),
     );
   }
 }
+
 
 class MatchItem extends StatelessWidget {
   final String item;

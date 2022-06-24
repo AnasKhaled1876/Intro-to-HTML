@@ -14,6 +14,7 @@ class LessonFiveStudy extends StatefulWidget {
 
 class _LessonFiveStudyState extends State<LessonFiveStudy> {
   bool firstPress = false;
+  String buttonText = "تابع";
 
   @override
   Widget build(BuildContext context) {
@@ -76,13 +77,14 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
                   } else {
                     setState(() {
                       firstPress = true;
+                      buttonText="النشاط";
                     });
                   }
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Colors.black, minimumSize: Size(80.w, 8.h)),
                 child: Text(
-                  "النشاط",
+                  buttonText,
                   style: TextStyle(fontSize: 20.sp),
                 ),
               ),

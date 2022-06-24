@@ -11,23 +11,14 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          itemExtent: 700,
-          children: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ProfilePage()));
-              },
-              child:  Text("الملف الشخصي",style: TextStyle(fontSize: 23.sp),),
-            )
-          ],
-        ),
-      ),
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.person),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const ProfilePage()));
+          },
+        ),
         centerTitle: true,
         backgroundColor: Colors.deepOrangeAccent,
         title: const Text("لوحة التعلم"),

@@ -28,7 +28,10 @@ class _IntroPageState extends State<IntroPage> {
         body: AnimatedCrossFade(
       firstChild: Center(child: Image.asset("assets/intro-pic.png")),
       duration: const Duration(seconds: 1),
-      secondChild: const IntroWidget(),
+      secondChild: SizedBox(
+          width: SizerUtil.width,
+          height: SizerUtil.height,
+          child: IntroWidget()),
       crossFadeState:
           welcomed ? CrossFadeState.showSecond : CrossFadeState.showFirst,
     ));

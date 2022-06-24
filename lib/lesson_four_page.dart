@@ -23,15 +23,21 @@ class LessonFourStudy extends StatelessWidget {
         ),
         title: Row(
           children: [
-            SizedBox(width: 21.w,),
+            SizedBox(
+              width: 21.w,
+            ),
             const Text("الدرس الرابع"),
-            SizedBox(width: 16.w,),
+            SizedBox(
+              width: 16.w,
+            ),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MainPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MainPage()));
                 },
                 icon: const Icon(Icons.home),
               ),
@@ -44,27 +50,54 @@ class LessonFourStudy extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Expanded(
-              flex: 9,
-              child: Center(
-                child: Image.asset("assets/lesson4.png"),
+            SizedBox(
+              height: 7.h,
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "مكونات الكود \"tag\"",
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    fontSize: 21.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red[900]),
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LessonFourActivity()));
-                },
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.black, minimumSize: Size(80.w, 8.h)),
-                child:  Text(
-                  "النشاط",
-                  style: TextStyle(fontSize: 20.sp),
-                ),
+            RichText(
+              textDirection: TextDirection.rtl,
+              text: TextSpan(
+                text: "لتوضيح مكونات الكود البرمجي  tag  لاحظ معي هذا المثال ",
+                style: TextStyle(color: Colors.black, fontSize: 15.sp),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: " < Body Bgcolor = \" red \" > ",
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15.sp),
+                  ),
+                  TextSpan(
+                    text:
+                        " بعد هذا المثال يتضح الكود يتكون من ثلاث عناصر وهي : \n 1-الامر tag يخبر المتصفح عن العمل الذي يجب القيام به. \n  2- الخاصية attribute تحدد الكيفية التي يتم بها أداء هذا العمل. \n 3- القيمة value تعبر عن الخاصية وتحدد شكل الاداء. ",
+                    style: TextStyle(fontSize: 15.sp, letterSpacing: 1.0, fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LessonFourActivity()));
+              },
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.black, minimumSize: Size(80.w, 8.h)),
+              child: Text(
+                "النشاط",
+                style: TextStyle(fontSize: 20.sp),
               ),
             ),
             SizedBox(
@@ -97,13 +130,14 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
     }
   }
 
-  void setFinished(){
+  void setFinished() {
     if (checkBoxValues[2] == true) {
       finished = true;
     } else {
       finished = false;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,15 +152,21 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
         ),
         title: Row(
           children: [
-            SizedBox(width: 21.w,),
+            SizedBox(
+              width: 21.w,
+            ),
             const Text("النشاط"),
-            SizedBox(width: 19.w,),
+            SizedBox(
+              width: 19.w,
+            ),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MainPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MainPage()));
                 },
                 icon: const Icon(Icons.home),
               ),
@@ -146,7 +186,8 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
               child: Text(
                 "أمامك بعض المشكلات يرجى ملاحظتها جيدا واختيار الإجابة الصحيحة بين المشكلات التالية:",
                 textDirection: TextDirection.rtl,
-                style: TextStyle(fontSize: 18.0.sp, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(fontSize: 18.0.sp, fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(

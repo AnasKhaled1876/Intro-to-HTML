@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/home_page.dart';
 import 'package:sizer/sizer.dart';
-
 import 'lesson_four_page.dart';
 import 'main_page.dart';
 
@@ -22,15 +21,21 @@ class LessonThreeStudy extends StatelessWidget {
         ),
         title: Row(
           children: [
-            SizedBox(width: 21.w,),
+            SizedBox(
+              width: 21.w,
+            ),
             const Text("الدرس الثالث"),
-            SizedBox(width: 16.w,),
+            SizedBox(
+              width: 16.w,
+            ),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MainPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MainPage()));
                 },
                 icon: const Icon(Icons.home),
               ),
@@ -65,7 +70,7 @@ class LessonThreeStudy extends StatelessWidget {
                         builder: (context) => const LessonThreeActivity()));
               },
               style: ElevatedButton.styleFrom(
-                  primary: Colors.black, minimumSize:  Size(80.w, 7.h)),
+                  primary: Colors.black, minimumSize: Size(80.w, 7.h)),
               child: Text(
                 "النشاط",
                 style: TextStyle(fontSize: 20.sp),
@@ -86,6 +91,7 @@ class LessonThreeActivity extends StatefulWidget {
 }
 
 class _LessonThreeActivityState extends State<LessonThreeActivity> {
+
   List<String> headings = [
     "كود مفرد",
     "<tag>",
@@ -104,6 +110,7 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
   ];
   List<String> inputs = ["", "", "", "", "", ""];
   bool finished = false;
+  double checkOpacity = 1;
 
   bool check() {
     for (int i = 0; i < answers.length; i++) {
@@ -117,8 +124,10 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
   List<Widget> fillRows() {
     List<Widget> myChoices = [];
     for (int i = 0; i < headings.length; i += 3) {
-      if(i==3) {
-        myChoices.add( SizedBox(height: 4.h,));
+      if (i == 3) {
+        myChoices.add(SizedBox(
+          height: 4.h,
+        ));
       }
       myChoices.add(
         Row(
@@ -150,15 +159,21 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
         ),
         title: Row(
           children: [
-            SizedBox(width: 24.w,),
+            SizedBox(
+              width: 24.w,
+            ),
             const Text("النشاط"),
-            SizedBox(width: 25.w,),
+            SizedBox(
+              width: 25.w,
+            ),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MainPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MainPage()));
                 },
                 icon: const Icon(Icons.home),
               ),
@@ -174,12 +189,13 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
             SizedBox(
               height: 4.h,
             ),
-             Align(
+            Align(
               alignment: Alignment.centerRight,
               child: Text(
                 "أمامك مجموعة من المربعات الفارغة انظري اسفل الاحجية ستجدين مجموعة من الاكواد قومي بترتيبها بطريقة السحب والافلات.",
                 textDirection: TextDirection.rtl,
-                style: TextStyle(fontSize: 17.0.sp, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(fontSize: 17.0.sp, fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(
@@ -207,11 +223,10 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                     onAccept: (data) => setState(() {
                       inputs[0] = data;
                       if (check()) {
+                        checkOpacity = 0;
                         finished = true;
-                      }
-                      else
-                      {
-                        finished=false;
+                      } else {
+                        finished = false;
                       }
                     }),
                     builder: (context, _, __) => BlackRow(input: inputs[0]),
@@ -220,11 +235,10 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                     onAccept: (data) => setState(() {
                       inputs[1] = data;
                       if (check()) {
+                        checkOpacity = 0;
                         finished = true;
-                      }
-                      else
-                      {
-                        finished=false;
+                      } else {
+                        finished = false;
                       }
                     }),
                     builder: (context, _, __) => BlackRow(input: inputs[1]),
@@ -233,11 +247,10 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                     onAccept: (data) => setState(() {
                       inputs[2] = data;
                       if (check()) {
+                        checkOpacity = 0;
                         finished = true;
-                      }
-                      else
-                      {
-                        finished=false;
+                      } else {
+                        finished = false;
                       }
                     }),
                     builder: (context, _, __) => BlackRow(input: inputs[2]),
@@ -269,11 +282,10 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                   onAccept: (data) => setState(() {
                     inputs[3] = data;
                     if (check()) {
+                      checkOpacity = 0;
                       finished = true;
-                    }
-                    else
-                    {
-                      finished=false;
+                    } else {
+                      finished = false;
                     }
                   }),
                   builder: (context, _, __) => GreenRow(input: inputs[3]),
@@ -282,11 +294,10 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                   onAccept: (data) => setState(() {
                     inputs[4] = data;
                     if (check()) {
+                      checkOpacity = 0;
                       finished = true;
-                    }
-                    else
-                    {
-                      finished=false;
+                    } else {
+                      finished = false;
                     }
                   }),
                   builder: (context, _, __) => GreenRow(input: inputs[4]),
@@ -295,21 +306,47 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                   onAccept: (data) => setState(() {
                     inputs[5] = data;
                     if (check()) {
+                      checkOpacity = 0;
                       finished = true;
+                    } else {
+                      finished = false;
                     }
-                    else
-                      {
-                        finished=false;
-                      }
                   }),
                   builder: (context, _, __) => GreenRow(input: inputs[5]),
                 ),
               ],
             ),
             SizedBox(
-              height: 6.h,
+              height: 2.h,
             ),
-            Column(crossAxisAlignment: CrossAxisAlignment.center,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AnimatedOpacity(
+                  opacity: finished ? 1.0 : 0.0,
+                  duration: const Duration(milliseconds: 600),
+                  child: const Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                    size: 50,
+                  ),
+                ),
+                AnimatedOpacity(
+                  opacity: finished ? 0.0 : 1.0,
+                  duration: const Duration(milliseconds: 600),
+                  child: const Icon(
+                    Icons.ac_unit_rounded,
+                    color: Colors.red,
+                    size: 50,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 4.h,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: fillRows(),
             ),
             SizedBox(height: 8.h),
@@ -317,8 +354,10 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
               ElevatedButton(
                 onPressed: () {
                   HomePage.checkLevel(3);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const LessonFourStudy()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LessonFourStudy()));
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Colors.black, minimumSize: Size(60.w, 7.h)),
@@ -377,7 +416,7 @@ class BlackRow extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           input,
-          style: TextStyle(fontSize: 13.0.sp,color: Colors.white),
+          style: TextStyle(fontSize: 13.0.sp, color: Colors.white),
         ),
       ),
     );

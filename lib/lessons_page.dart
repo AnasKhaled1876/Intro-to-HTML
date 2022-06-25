@@ -1,4 +1,3 @@
-import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/first_lesson_page.dart';
 import 'package:intro_to_html/lesson_five_page.dart';

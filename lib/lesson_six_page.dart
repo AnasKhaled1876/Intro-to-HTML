@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/lessons_page.dart';
 import 'package:sizer/sizer.dart';
@@ -17,7 +18,7 @@ class LessonSixStudy extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back,size: 35,),
         ),
         title: Row(
           children: [
@@ -37,7 +38,7 @@ class LessonSixStudy extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home),
+                icon: const Icon(Icons.home, size: 35,),
               ),
             ),
           ],
@@ -128,6 +129,37 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
   String answer2 = "";
   bool finished = false;
 
+  bool checkAnswersEmpty() {
+    if (answer1 != "" && answer2 != "") {
+      emptyAllAnswers();
+      return true;
+    }
+    return false;
+  }
+
+  void emptyAllAnswers(){
+    answer1="";
+    answer2="";
+  }
+
+  void playCorrectSound() {
+    final assetsAudioPlayer = AssetsAudioPlayer();
+
+    assetsAudioPlayer.open(
+      Audio("assets/correct.wav"),
+    );
+    assetsAudioPlayer.play();
+  }
+
+  void playWrongSound() {
+    final assetsAudioPlayer2 = AssetsAudioPlayer();
+
+    assetsAudioPlayer2.open(
+      Audio("assets/wrong.wav"),
+    );
+    assetsAudioPlayer2.play();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,7 +170,7 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35,),
         ),
         title: Row(
           children: [
@@ -158,7 +190,7 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                       MaterialPageRoute(
                           builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home),
+                icon: const Icon(Icons.home, size: 35,),
               ),
             ),
           ],
@@ -183,6 +215,9 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                           answer2 = data;
                           if (answer1 == "فقرة" && answer2 == "مزدوج") {
                             finished = true;
+                            playCorrectSound();
+                          } else if (checkAnswersEmpty()) {
+                            playWrongSound();
                           } else {
                             finished = false;
                           }
@@ -241,6 +276,9 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                           answer1 = data;
                           if (answer1 == "فقرة" && answer2 == "مزدوج") {
                             finished = true;
+                            playCorrectSound();
+                          } else if (checkAnswersEmpty()) {
+                            playWrongSound();
                           } else {
                             finished = false;
                           }

@@ -25,13 +25,13 @@ class _LessonsPageState extends State<LessonsPage> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35),
         ),
         title: const Text("دروسك"),
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 3.h),
-        child: ListView(
+        child: Column(
           children: <Widget>[
             SizedBox(
               height: 3.h,
@@ -79,7 +79,7 @@ class LessonTile extends StatelessWidget {
       },
       style: ElevatedButton.styleFrom(
         primary: Colors.blueGrey.withOpacity(0.6),
-        minimumSize: Size(80.w, 6.h),
+        minimumSize: Size(80.w, 10.h),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
         ),

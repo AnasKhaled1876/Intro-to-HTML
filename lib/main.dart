@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/intro_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:just_audio/just_audio.dart';
 import 'firebase_options.dart';
 import 'package:sizer/sizer.dart';
 

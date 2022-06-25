@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/lesson_five_page.dart';
 import 'package:intro_to_html/lessons_page.dart';
@@ -19,7 +20,7 @@ class LessonFourStudy extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35),
         ),
         title: Row(
           children: [
@@ -39,7 +40,7 @@ class LessonFourStudy extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home),
+                icon: const Icon(Icons.home, size: 35),
               ),
             ),
           ],
@@ -130,10 +131,30 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
     }
   }
 
+
+  void playCorrectSound() {
+    final assetsAudioPlayer = AssetsAudioPlayer();
+
+    assetsAudioPlayer.open(
+      Audio("assets/correct.wav"),
+    );
+    assetsAudioPlayer.play();
+  }
+
+  void playWrongSound() {
+    final assetsAudioPlayer2 = AssetsAudioPlayer();
+
+    assetsAudioPlayer2.open(
+      Audio("assets/wrong.wav"),
+    );
+    assetsAudioPlayer2.play();
+  }
   void setFinished() {
     if (checkBoxValues[2] == true) {
+      playCorrectSound();
       finished = true;
     } else {
+      playWrongSound();
       finished = false;
     }
   }
@@ -148,7 +169,7 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35),
         ),
         title: Row(
           children: [
@@ -168,7 +189,7 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                       MaterialPageRoute(
                           builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home),
+                icon: const Icon(Icons.home, size: 35),
               ),
             ),
           ],

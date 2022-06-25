@@ -1,5 +1,7 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/lesson_six_page.dart';
+import 'package:intro_to_html/third_lesson_page.dart';
 import 'package:sizer/sizer.dart';
 import 'first_lesson_page.dart';
 import 'home_page.dart';
@@ -15,6 +17,8 @@ class LessonFiveStudy extends StatefulWidget {
 class _LessonFiveStudyState extends State<LessonFiveStudy> {
   bool firstPress = false;
   String buttonText = "تابع";
+
+
 
   List<Widget> fillHeadingsText() {
     List<Widget> headingTexts = [];
@@ -49,7 +53,7 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35,),
         ),
         title: Row(
           children: [
@@ -69,7 +73,7 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
                       MaterialPageRoute(
                           builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home),
+                icon: const Icon(Icons.home, size: 35),
               ),
             ),
           ],
@@ -176,12 +180,55 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
   List<String> inputs = ["", "", "", "", "", ""];
   bool finished = false;
 
+  void emptyAllAnswers(){
+    for (int i = 0; i < inputs.length; i++) {
+      inputs[i]="";
+    }
+  }
+
+  bool checkAllAnswers() {
+    for (int i = 0; i < inputs.length; i++) {
+      if (inputs[i] == "") {
+        return false;
+      }
+    }
+    emptyAllAnswers();
+    return true;
+  }
+
+  bool checkDraggableUsed(String draggableText) {
+    for (int i = 0; i < inputs.length; i++) {
+      if (inputs[i] == draggableText) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  void playCorrectSound() {
+    final assetsAudioPlayer = AssetsAudioPlayer();
+
+    assetsAudioPlayer.open(
+      Audio("assets/correct.wav"),
+    );
+    assetsAudioPlayer.play();
+  }
+
+  void playWrongSound() {
+    final assetsAudioPlayer2 = AssetsAudioPlayer();
+
+    assetsAudioPlayer2.open(
+      Audio("assets/wrong.wav"),
+    );
+    assetsAudioPlayer2.play();
+  }
   bool check() {
     for (int i = 0; i < headingsNo.length; i++) {
       if (inputs[i] != headingsNo[i]) {
         return false;
       }
     }
+    emptyAllAnswers();
     return true;
   }
 
@@ -192,11 +239,11 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            DraggableItem(item: headingsNo[i]),
+            DraggableItem(item: headingsNo[i], visible: !checkDraggableUsed(headingsNo[i]),),
             SizedBox(width: 5.w),
-            DraggableItem(item: headingsNo[i + 1]),
+            DraggableItem(item: headingsNo[i + 1], visible: !checkDraggableUsed(headingsNo[i + 1]),),
             SizedBox(width: 5.w),
-            DraggableItem(item: headingsNo[i + 2]),
+            DraggableItem(item: headingsNo[i + 2], visible: !checkDraggableUsed(headingsNo[i + 2]),),
           ],
         ),
       );
@@ -215,7 +262,7 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35),
         ),
         title: Row(
           children: [
@@ -235,7 +282,7 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                       MaterialPageRoute(
                           builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home),
+                icon: const Icon(Icons.home, size: 35),
               ),
             ),
           ],
@@ -276,7 +323,13 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                         onAccept: (data) => setState(() {
                           inputs[0] = data;
                           if (check()) {
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) =>
@@ -294,7 +347,14 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                         onAccept: (data) => setState(() {
                           inputs[1] = data;
                           if (check()) {
+
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) =>
@@ -312,7 +372,14 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                         onAccept: (data) => setState(() {
                           inputs[2] = data;
                           if (check()) {
+
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) =>
@@ -330,7 +397,14 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                         onAccept: (data) => setState(() {
                           inputs[3] = data;
                           if (check()) {
+
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) =>
@@ -348,7 +422,14 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                         onAccept: (data) => setState(() {
                           inputs[4] = data;
                           if (check()) {
+
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) =>
@@ -366,7 +447,13 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
                         onAccept: (data) => setState(() {
                           inputs[5] = data;
                           if (check()) {
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) =>
@@ -380,6 +467,7 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
             SizedBox(
               height: 4.h,
             ),
+            //AnswerIcons(finished: finished),
             Column(
               children: fillRows(),
             ),

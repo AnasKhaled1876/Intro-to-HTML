@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/third_lesson_page.dart';
 import 'package:sizer/sizer.dart';
@@ -22,7 +23,7 @@ class _LessonTwoStudyState extends State<LessonTwoStudy> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35),
         ),
         title: Row(
           children: [
@@ -36,7 +37,7 @@ class _LessonTwoStudyState extends State<LessonTwoStudy> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home),
+                icon: const Icon(Icons.home, size: 35),
               ),
             ),
           ],
@@ -109,7 +110,20 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
   ];
   List<String> inputs = ["", "", "", "", "", "", "", ""];
   bool finished = false;
+  void emptyAllAnswers(){
+    for (int i = 0; i < inputs.length; i++) {
+      inputs[i]="";
+    }
+  }
+  bool checkDraggableUsed(String draggableText){
 
+    for(int i=0;i<inputs.length;i++) {
+      if(inputs[i] == draggableText) {
+        return false;
+      }
+    }
+    return true;
+  }
   bool check() {
     for (int i = 0; i < headingsNo.length; i++) {
       if (inputs[i] != headingsNo[i]) {
@@ -118,7 +132,33 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
     }
     return true;
   }
+  bool checkAllAnswers() {
+    for (int i = 0; i < inputs.length; i++) {
+      if (inputs[i] == "") {
+        return false;
+      }
+    }
+    emptyAllAnswers();
+    return true;
+  }
 
+  void playCorrectSound() {
+    final assetsAudioPlayer = AssetsAudioPlayer();
+
+    assetsAudioPlayer.open(
+      Audio("assets/correct.wav"),
+    );
+    assetsAudioPlayer.play();
+  }
+
+  void playWrongSound() {
+    final assetsAudioPlayer2 = AssetsAudioPlayer();
+
+    assetsAudioPlayer2.open(
+      Audio("assets/wrong.wav"),
+    );
+    assetsAudioPlayer2.play();
+  }
   List<Widget> fillRows() {
     List<Widget> myChoices = [];
     for (int i = 0; i < headingsNo.length; i += 2) {
@@ -126,9 +166,9 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            DraggableItemLevelTwo(item: headingsNo[i]),
+            DraggableItemLevelTwo(item: headingsNo[i], visible: checkDraggableUsed(headingsNo[i]),),
              SizedBox(width: 13.w),
-            DraggableItemLevelTwo(item: headingsNo[i + 1]),
+            DraggableItemLevelTwo(item: headingsNo[i + 1], visible: checkDraggableUsed(headingsNo[i + 1]),),
           ],
         ),
       );
@@ -147,7 +187,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35),
         ),
         title: Row(
           children: [
@@ -161,7 +201,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home),
+                icon: const Icon(Icons.home, size: 35),
               ),
             ),
           ],
@@ -171,7 +211,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
         margin: EdgeInsets.symmetric(horizontal: 1.h),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 3.h,),
+            SizedBox(height: 1.h,),
             Align(
               alignment: Alignment.centerRight,
               child: Text(
@@ -199,7 +239,13 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         onAccept: (data) => setState(() {
                           inputs[0] = data;
                           if (check()) {
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) => DragTargetContainer(
@@ -218,7 +264,13 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         onAccept: (data) => setState(() {
                           inputs[1] = data;
                           if (check()) {
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) => DragTargetContainer(
@@ -237,7 +289,13 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         onAccept: (data) => setState(() {
                           inputs[2] = data;
                           if (check()) {
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) => DragTargetContainer(
@@ -256,7 +314,13 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         onAccept: (data) => setState(() {
                           inputs[3] = data;
                           if (check()) {
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) => DragTargetContainer(
@@ -275,7 +339,13 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         onAccept: (data) => setState(() {
                           inputs[4] = data;
                           if (check()) {
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) => DragTargetContainer(
@@ -294,7 +364,13 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         onAccept: (data) => setState(() {
                           inputs[5] = data;
                           if (check()) {
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) => DragTargetContainer(
@@ -313,7 +389,13 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         onAccept: (data) => setState(() {
                           inputs[6] = data;
                           if (check()) {
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) => DragTargetContainer(
@@ -332,7 +414,13 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
                         onAccept: (data) => setState(() {
                           inputs[7] = data;
                           if (check()) {
+                            playCorrectSound();
                             finished = true;
+                          } else if (checkAllAnswers()) {
+                            playWrongSound();
+                            finished=false;
+                          }else {
+                            finished = false;
                           }
                         }),
                         builder: (context, _, __) => DragTargetContainer(
@@ -345,7 +433,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
               ),
             ),
             SizedBox(
-              height: 3.h,
+              height: 1.h,
             ),
             Column(
               children: fillRows(),
@@ -427,22 +515,31 @@ class HeadingsBox extends StatelessWidget {
   }
 }
 
-class DraggableItemLevelTwo extends StatelessWidget {
+class DraggableItemLevelTwo extends StatefulWidget {
+  const DraggableItemLevelTwo({Key? key, required this.item, required this.visible}) : super(key: key);
   final String item;
+  final bool visible;
+  @override
+  State<DraggableItemLevelTwo> createState() => _DraggableItemLevelTwoState();
+}
 
-  const DraggableItemLevelTwo({super.key, required this.item});
-
-
+class _DraggableItemLevelTwoState extends State<DraggableItemLevelTwo> {
   @override
   Widget build(BuildContext context) {
-    return Draggable<String>(
-      data: item,
-      feedback: MatchItemLevelTwo(item: item),
-      childWhenDragging: null,
-      child: MatchItemLevelTwo(item: item),
+    return Visibility(
+      visible: widget.visible,
+      child: Draggable<String>(
+        data: widget.item,
+        feedback: MatchItemLevelTwo(item: widget.item),
+        childWhenDragging: null,
+        child: MatchItemLevelTwo(item: widget.item),
+      ),
     );
   }
 }
+
+
+
 
 class MatchItemLevelTwo extends StatelessWidget {
   final String item;

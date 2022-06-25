@@ -12,7 +12,7 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.person),
+          icon: const Icon(Icons.person, size: 35),
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const ProfilePage()));
@@ -67,7 +67,7 @@ class RoadMapPage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35),
         ),
         title: const Text("خريطة السير"),
       ),

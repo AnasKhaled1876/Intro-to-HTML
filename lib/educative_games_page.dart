@@ -33,7 +33,7 @@ class _EducativeGamesState extends State<EducativeGames> {
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 2.h),
-        child: ListView(
+        child: Column(
           children: <Widget>[
             SizedBox(height: 3.h,),
             LessonTile("نشاط الدرس الأول", const LessonOneActivity()),

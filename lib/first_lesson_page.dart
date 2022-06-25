@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/home_page.dart';
 import 'package:intro_to_html/main_page.dart';
@@ -15,15 +16,37 @@ class LessonOneActivity extends StatefulWidget {
 class _LessonOneActivityState extends State<LessonOneActivity> {
   String answer1 = "", answer2 = "";
   bool finished = false, next = false;
+  void playCorrectSound() {
+    final assetsAudioPlayer = AssetsAudioPlayer();
 
+    assetsAudioPlayer.open(
+      Audio("assets/correct.wav"),
+    );
+    assetsAudioPlayer.play();
+  }
+
+  void playWrongSound() {
+    final assetsAudioPlayer2 = AssetsAudioPlayer();
+
+    assetsAudioPlayer2.open(
+      Audio("assets/wrong.wav"),
+    );
+    assetsAudioPlayer2.play();
+  }
+  void emptyAllAnswers(){
+    answer1="";
+    answer2="";
+  }
   void check(){
   if(answer1!="" && answer2!="") {
+    emptyAllAnswers();
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text(
         "إجابة غير صحيحة من فضلك أعد المحاولة",
         textDirection: TextDirection.rtl,
       ),
     ));
+    playWrongSound();
   }
   }
 
@@ -37,7 +60,7 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35),
         ),
         title: Row(
           children: [
@@ -51,7 +74,7 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home),
+                icon: const Icon(Icons.home, size: 35),
               ),
             ),
           ],
@@ -81,14 +104,16 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
                     onAccept: (data) => setState(() {
                       answer2 = data;
                       if (answer1 == "HTML" && answer2 == "هيكلة") {
+                        playCorrectSound();
                         finished = true;
                       }
                       else {
+                        finished=false;
                         check();
                       }
                     }),
                     builder: (context, _, __) => SizedBox(
-                      width: 17.w,
+                      width: 20.w,
                       height: 5.h,
                       child: Text(
                         answer2,
@@ -120,9 +145,11 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
                     onAccept: (data) => setState(() {
                       answer1 = data;
                       if (answer1 == "HTML" && answer2 == "هيكلة") {
+                        playCorrectSound();
                         finished = true;
                       }
                       else {
+                        finished=false;
                         check();
                       }
                     },
@@ -167,9 +194,9 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children:  <Widget>[
-              const DraggableItem(item: "CSS"),
+              DraggableItem(item: "CSS", visible: (answer1=="CSS" || answer2 == "CSS"),),
               SizedBox(width: 8.w),
-              const DraggableItem(item: "HTML"),
+              DraggableItem(item: "HTML", visible: (answer1=="HTML" || answer2 == "HTML"),),
             ],
           ),
           SizedBox(
@@ -178,9 +205,9 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children:  <Widget>[
-              const DraggableItem(item: "تنسيق"),
+              DraggableItem(item: "تنسيق", visible: (answer1=="تنسيق" || answer2 == "تنسيق"),),
               SizedBox(width: 8.w),
-              const DraggableItem(item: "هيكلة"),
+              DraggableItem(item: "هيكلة", visible: (answer1=="هيكلة" || answer2 == "هيكلة"),),
             ],
           ),
           SizedBox(height: 6.h),
@@ -209,8 +236,9 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
 }
 
 class DraggableItem extends StatefulWidget {
-  const DraggableItem({Key? key, required this.item}) : super(key: key);
+  const DraggableItem({Key? key, required this.item, required this.visible}) : super(key: key);
   final String item;
+  final bool visible;
   @override
   State<DraggableItem> createState() => _DraggableItemState();
 }
@@ -220,7 +248,7 @@ class _DraggableItemState extends State<DraggableItem> {
   Widget build(BuildContext context) {
 
     return Visibility(
-      visible: true,
+      visible: !widget.visible,
       child: Draggable<String>(
         onDragCompleted: (){
         },
@@ -283,7 +311,7 @@ class LessonOneStudy extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35),
         ),
         title: Row(
           children: [
@@ -297,7 +325,7 @@ class LessonOneStudy extends StatelessWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home),
+                icon: const Icon(Icons.home, size: 35),
               ),
             ),
           ],

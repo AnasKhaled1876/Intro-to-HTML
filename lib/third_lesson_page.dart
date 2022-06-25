@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_to_html/home_page.dart';
 import 'package:sizer/sizer.dart';
@@ -17,7 +18,7 @@ class LessonThreeStudy extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35),
         ),
         title: Row(
           children: [
@@ -37,7 +38,7 @@ class LessonThreeStudy extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home),
+                icon: const Icon(Icons.home, size: 35),
               ),
             ),
           ],
@@ -91,7 +92,6 @@ class LessonThreeActivity extends StatefulWidget {
 }
 
 class _LessonThreeActivityState extends State<LessonThreeActivity> {
-
   List<String> headings = [
     "كود مفرد",
     "<tag>",
@@ -121,6 +121,47 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
     return true;
   }
 
+  bool checkDraggableUsed(String draggableText) {
+    for (int i = 0; i < inputs.length; i++) {
+      if (inputs[i] == draggableText) {
+        return false;
+      }
+    }
+    return true;
+  }
+  void emptyAllAnswers(){
+    for (int i = 0; i < inputs.length; i++) {
+      inputs[i]="";
+    }
+  }
+  bool checkAllAnswers() {
+    for (int i = 0; i < inputs.length; i++) {
+      if (inputs[i] == "") {
+        return false;
+      }
+    }
+    emptyAllAnswers();
+    return true;
+  }
+
+  void playCorrectSound() {
+    final assetsAudioPlayer = AssetsAudioPlayer();
+
+    assetsAudioPlayer.open(
+      Audio("assets/correct.wav"),
+    );
+    assetsAudioPlayer.play();
+  }
+
+  void playWrongSound() {
+    final assetsAudioPlayer2 = AssetsAudioPlayer();
+
+    assetsAudioPlayer2.open(
+      Audio("assets/wrong.wav"),
+    );
+    assetsAudioPlayer2.play();
+  }
+
   List<Widget> fillRows() {
     List<Widget> myChoices = [];
     for (int i = 0; i < headings.length; i += 3) {
@@ -133,11 +174,20 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Dragi(headings[i]),
+            Dragi(
+              item: headings[i],
+              visible: checkDraggableUsed(headings[i]),
+            ),
             SizedBox(width: 8.0.w),
-            Dragi(headings[i + 1]),
+            Dragi(
+              item: headings[i + 1],
+              visible: checkDraggableUsed(headings[i + 1]),
+            ),
             SizedBox(width: 8.0.w),
-            Dragi(headings[i + 2]),
+            Dragi(
+              item: headings[i + 2],
+              visible: checkDraggableUsed(headings[i + 2]),
+            ),
           ],
         ),
       );
@@ -155,7 +205,7 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, size: 35),
         ),
         title: Row(
           children: [
@@ -175,7 +225,7 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                       MaterialPageRoute(
                           builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home),
+                icon: const Icon(Icons.home, size: 35),
               ),
             ),
           ],
@@ -224,7 +274,11 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                       inputs[0] = data;
                       if (check()) {
                         checkOpacity = 0;
+                        playCorrectSound();
                         finished = true;
+                      } else if (checkAllAnswers()) {
+                        playWrongSound();
+                        finished = false;
                       } else {
                         finished = false;
                       }
@@ -236,7 +290,11 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                       inputs[1] = data;
                       if (check()) {
                         checkOpacity = 0;
+                        playCorrectSound();
                         finished = true;
+                      } else if (checkAllAnswers()) {
+                        playWrongSound();
+                        finished = false;
                       } else {
                         finished = false;
                       }
@@ -248,7 +306,11 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                       inputs[2] = data;
                       if (check()) {
                         checkOpacity = 0;
+                        playCorrectSound();
                         finished = true;
+                      } else if (checkAllAnswers()) {
+                        playWrongSound();
+                        finished = false;
                       } else {
                         finished = false;
                       }
@@ -283,7 +345,11 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                     inputs[3] = data;
                     if (check()) {
                       checkOpacity = 0;
+                      playCorrectSound();
                       finished = true;
+                    } else if (checkAllAnswers()) {
+                      playWrongSound();
+                      finished = false;
                     } else {
                       finished = false;
                     }
@@ -295,7 +361,11 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                     inputs[4] = data;
                     if (check()) {
                       checkOpacity = 0;
+                      playCorrectSound();
                       finished = true;
+                    } else if (checkAllAnswers()) {
+                      playWrongSound();
+                      finished = false;
                     } else {
                       finished = false;
                     }
@@ -307,7 +377,11 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
                     inputs[5] = data;
                     if (check()) {
                       checkOpacity = 0;
+                      playCorrectSound();
                       finished = true;
+                    } else if (checkAllAnswers()) {
+                      playWrongSound();
+                      finished = false;
                     } else {
                       finished = false;
                     }
@@ -319,29 +393,7 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
             SizedBox(
               height: 2.h,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AnimatedOpacity(
-                  opacity: finished ? 1.0 : 0.0,
-                  duration: const Duration(milliseconds: 600),
-                  child: const Icon(
-                    Icons.check_circle,
-                    color: Colors.green,
-                    size: 50,
-                  ),
-                ),
-                AnimatedOpacity(
-                  opacity: finished ? 0.0 : 1.0,
-                  duration: const Duration(milliseconds: 600),
-                  child: const Icon(
-                    Icons.ac_unit_rounded,
-                    color: Colors.red,
-                    size: 50,
-                  ),
-                ),
-              ],
-            ),
+            //AnswerIcons(finished: finished),
             SizedBox(
               height: 4.h,
             ),
@@ -369,6 +421,42 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class AnswerIcons extends StatelessWidget {
+  const AnswerIcons({
+    Key? key,
+    required this.finished,
+  }) : super(key: key);
+
+  final bool finished;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        AnimatedOpacity(
+          opacity: finished ? 1.0 : 0.0,
+          duration: const Duration(milliseconds: 600),
+          child: const Icon(
+            Icons.check_circle,
+            color: Colors.green,
+            size: 50,
+          ),
+        ),
+        AnimatedOpacity(
+          opacity: finished ? 0.0 : 1.0,
+          duration: const Duration(milliseconds: 600),
+          child: const Icon(
+            Icons.ac_unit_rounded,
+            color: Colors.red,
+            size: 50,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -423,20 +511,29 @@ class BlackRow extends StatelessWidget {
   }
 }
 
-class Dragi extends StatelessWidget {
+class Dragi extends StatefulWidget {
+  const Dragi({Key? key, required this.visible, required this.item})
+      : super(key: key);
+  final bool visible;
   final String item;
 
   @override
+  State<Dragi> createState() => _DragiState();
+}
+
+class _DragiState extends State<Dragi> {
+  @override
   Widget build(BuildContext context) {
-    return Draggable<String>(
-      data: item,
-      feedback: AnswerItem(item),
-      childWhenDragging: null,
-      child: AnswerItem(item),
+    return Visibility(
+      visible: widget.visible,
+      child: Draggable<String>(
+        data: widget.item,
+        feedback: AnswerItem(widget.item),
+        childWhenDragging: null,
+        child: AnswerItem(widget.item),
+      ),
     );
   }
-
-  Dragi(this.item, {Key? key}) : super(key: key);
 }
 
 class AnswerItem extends StatelessWidget {

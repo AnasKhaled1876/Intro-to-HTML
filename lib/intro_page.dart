@@ -48,22 +48,26 @@ class IntroWidget extends StatelessWidget {
     return Column(
       children: <Widget>[
         SizedBox(
-          height: 10.h,
+          height: 5.h,
         ),
         SizedBox(
           width: 100.w,
-          height: 60.h,
+          height: 55.h,
           child: Image.asset("assets/Welcome.png"),
         ),
         SizedBox(
-          height: 5.h,
+          height: 2.h,
         ),
-        Text(
-          "مرحبا بك يا صديقي سنتعلم سويا آساسيات برمجة الويب \n  \t\t\t\t\t\t\t\t\t\t\t لبدء التعلم اضغط على زر الدخول ",
-          style: TextStyle(
-              fontSize: 11.0.sp,
-              color: Colors.redAccent,
-              fontWeight: FontWeight.bold),
+        Align(
+          alignment: Alignment.center,
+          child: Text(
+            "مرحبا بك يا صديقي سنتعلم سويا آساسيات برمجة الويب\n لبدء التعلم اضغط على زر الدخول ",
+            style: TextStyle(
+                fontSize: 18.0.sp,
+                color: Colors.redAccent,
+                fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
         ),
         SizedBox(
           height: 6.h,

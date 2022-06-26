@@ -27,7 +27,7 @@ class _LessonsPageState extends State<LessonsPage> {
           },
           icon: const Icon(Icons.arrow_back, size: 35),
         ),
-        title: const Text("دروسك"),
+        title: Text("دروسك", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 3.h),

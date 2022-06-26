@@ -27,9 +27,9 @@ class _LessonTwoStudyState extends State<LessonTwoStudy> {
         ),
         title: Row(
           children: [
-            SizedBox(width: 20.w,),
-            const Text("الدرس الثاني"),
-            SizedBox(width: 17.w,),
+            SizedBox(width: 16.w,),
+            Text("الدرس الثاني", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
+            SizedBox(width: 13.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
@@ -72,7 +72,7 @@ class _LessonTwoStudyState extends State<LessonTwoStudy> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LessonTwoActivity()));
+                          builder: (context) => const LessonTwoActivity(game: false,)));
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Colors.black, minimumSize: Size(80.w, 9.h)),
@@ -90,8 +90,8 @@ class _LessonTwoStudyState extends State<LessonTwoStudy> {
 }
 
 class LessonTwoActivity extends StatefulWidget {
-  const LessonTwoActivity({Key? key}) : super(key: key);
-
+  const LessonTwoActivity({Key? key, required this.game}) : super(key: key);
+  final bool game;
   @override
   State<LessonTwoActivity> createState() => _LessonTwoActivityState();
 }
@@ -192,8 +192,8 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
         title: Row(
           children: [
             SizedBox(width: 25.w,),
-            const Text("النشاط"),
-            SizedBox(width: 23.w,),
+            Text("النشاط", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
+            SizedBox(width: 18.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
@@ -439,7 +439,7 @@ class _LessonTwoActivityState extends State<LessonTwoActivity> {
               children: fillRows(),
             ),
             SizedBox(height: 2.h),
-            if (finished)
+            if (finished && !widget.game)
               ElevatedButton(
                 onPressed: () {
                   HomePage.checkLevel(2);
@@ -478,7 +478,7 @@ class DragTargetContainer extends StatelessWidget {
       child: Align(
         child: Text(
           input,
-          style: TextStyle(fontSize: 16.sp),
+          style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
         ),
       ),
     );
@@ -553,13 +553,14 @@ class MatchItemLevelTwo extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(8)),
         color: Colors.blueGrey
       ),
-      width: 29.w,
-      height: 4.h,
+      width: 30.w,
+      height: 6.h,
       child: Center(
           child: Text(
             item,
             style:  TextStyle(
                 fontSize: 17.sp,
+                fontWeight: FontWeight.bold,
                 decoration: TextDecoration.none,
                 color: Colors.white),
           )),

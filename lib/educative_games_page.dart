@@ -22,31 +22,31 @@ class _EducativeGamesState extends State<EducativeGames> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.deepOrangeAccent.withOpacity(0.8),
+        backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
           icon: const Icon(Icons.arrow_back),
         ),
-        title: const Text("دروسك"),
+        title: Text("الألعاب التعليمية", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 2.h),
         child: Column(
           children: <Widget>[
             SizedBox(height: 3.h,),
-            LessonTile("نشاط الدرس الأول", const LessonOneActivity()),
+            LessonTile("نشاط الدرس الأول", const LessonOneActivity(game: true,)),
             SizedBox(height: 3.h,),
-            LessonTile("نشاط الدرس الثاني", const LessonTwoActivity()),
+            LessonTile("نشاط الدرس الثاني", const LessonTwoActivity(game: true,)),
             SizedBox(height: 3.h,),
-            LessonTile("نشاط الدرس الثالث", const LessonThreeActivity()),
+            LessonTile("نشاط الدرس الثالث", const LessonThreeActivity(game: true,)),
             SizedBox(height: 3.h,),
-            LessonTile("نشاط الدرس الرابع", const LessonFourActivity()),
+            LessonTile("نشاط الدرس الرابع", const LessonFourActivity(game: true,)),
             SizedBox(height: 3.h,),
-            LessonTile("نشاط الدرس الخامس", const LessonFiveActivity()),
+            LessonTile("نشاط الدرس الخامس", const LessonFiveActivity(game: true,)),
             SizedBox(height: 3.h,),
-            LessonTile("نشاط الدرس السادس", const LessonSixActivity()),
+            LessonTile("نشاط الدرس السادس", const LessonSixActivity(game: true,)),
           ],
         ),
       ),

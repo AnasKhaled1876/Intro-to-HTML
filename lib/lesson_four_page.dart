@@ -25,11 +25,11 @@ class LessonFourStudy extends StatelessWidget {
         title: Row(
           children: [
             SizedBox(
-              width: 21.w,
+              width: 17.w,
             ),
-            const Text("الدرس الرابع"),
+            Text("الدرس الرابع", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
             SizedBox(
-              width: 16.w,
+              width: 13.w,
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -92,7 +92,7 @@ class LessonFourStudy extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const LessonFourActivity()));
+                        builder: (context) => const LessonFourActivity(game: false,)));
               },
               style: ElevatedButton.styleFrom(
                   primary: Colors.black, minimumSize: Size(80.w, 8.h)),
@@ -112,8 +112,8 @@ class LessonFourStudy extends StatelessWidget {
 }
 
 class LessonFourActivity extends StatefulWidget {
-  const LessonFourActivity({Key? key}) : super(key: key);
-
+  const LessonFourActivity({Key? key, required this.game}) : super(key: key);
+  final bool game;
   @override
   State<LessonFourActivity> createState() => _LessonFourActivityState();
 }
@@ -176,9 +176,9 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
             SizedBox(
               width: 21.w,
             ),
-            const Text("النشاط"),
+            Text("النشاط", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
             SizedBox(
-              width: 19.w,
+              width: 17.w,
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -353,7 +353,7 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
               ],
             ),
             SizedBox(height: 12.h),
-            if (finished)
+            if (finished && !widget.game)
               ElevatedButton(
                 onPressed: () {
                   HomePage.checkLevel(4);

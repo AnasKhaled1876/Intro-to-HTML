@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intro_to_html/educative_games_page.dart';
 import 'package:intro_to_html/lessons_page.dart';
 import 'package:intro_to_html/profile_page.dart';
+import 'package:sizer/sizer.dart';
 
 
 class MainPage extends StatelessWidget {
@@ -20,7 +21,7 @@ class MainPage extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: Colors.deepOrangeAccent,
-        title: const Text("لوحة التعلم"),
+        title: Text("لوحة التعلم", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
       ),
       body: ListView(
         itemExtent: 220.0,
@@ -69,7 +70,7 @@ class RoadMapPage extends StatelessWidget {
           },
           icon: const Icon(Icons.arrow_back, size: 35),
         ),
-        title: const Text("خريطة السير"),
+        title: Text("خريطة السير", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
       ),
       body: const Center(
         child: Text("Coming soon"),

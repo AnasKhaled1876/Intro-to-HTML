@@ -18,16 +18,19 @@ class LessonSixStudy extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back,size: 35,),
+          icon: const Icon(
+            Icons.arrow_back,
+            size: 35,
+          ),
         ),
         title: Row(
           children: [
             SizedBox(
-              width: 21.w,
+              width: 14.w,
             ),
-            const Text("الدرس السادس"),
+            Text("الدرس السادس", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
             SizedBox(
-              width: 11.w,
+              width: 6.w,
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -38,7 +41,10 @@ class LessonSixStudy extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home, size: 35,),
+                icon: const Icon(
+                  Icons.home,
+                  size: 35,
+                ),
               ),
             ),
           ],
@@ -101,7 +107,7 @@ class LessonSixStudy extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const LessonSixActivity()));
+                        builder: (context) => const LessonSixActivity(game: false,)));
               },
               style: ElevatedButton.styleFrom(
                   primary: Colors.black, minimumSize: Size(80.w, 8.h)),
@@ -118,8 +124,8 @@ class LessonSixStudy extends StatelessWidget {
 }
 
 class LessonSixActivity extends StatefulWidget {
-  const LessonSixActivity({Key? key}) : super(key: key);
-
+  const LessonSixActivity({Key? key, required this.game}) : super(key: key);
+  final bool game;
   @override
   State<LessonSixActivity> createState() => _LessonSixActivityState();
 }
@@ -137,9 +143,9 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
     return false;
   }
 
-  void emptyAllAnswers(){
-    answer1="";
-    answer2="";
+  void emptyAllAnswers() {
+    answer1 = "";
+    answer2 = "";
   }
 
   void playCorrectSound() {
@@ -170,16 +176,22 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back, size: 35,),
+          icon: const Icon(
+            Icons.arrow_back,
+            size: 35,
+          ),
         ),
         title: Row(
           children: [
             SizedBox(
               width: 26.w,
             ),
-            const Text("النشاط"),
+            Text(
+              "النشاط",
+                style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)
+            ),
             SizedBox(
-              width: 22.w,
+              width: 17.w,
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -190,7 +202,10 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                       MaterialPageRoute(
                           builder: (context) => const MainPage()));
                 },
-                icon: const Icon(Icons.home, size: 35,),
+                icon: const Icon(
+                  Icons.home,
+                  size: 35,
+                ),
               ),
             ),
           ],
@@ -224,8 +239,8 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                         },
                       ),
                       builder: (context, _, __) => SizedBox(
-                        width: 26.w,
-                        height: 4.h,
+                        width: 30.w,
+                        height: 7.h,
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: Text(
@@ -285,8 +300,8 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                         },
                       ),
                       builder: (context, _, __) => SizedBox(
-                        width: 28.w,
-                        height: 4.h,
+                        width: 30.w,
+                        height: 7.h,
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: Text(
@@ -325,9 +340,9 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const DraggableItemLevelSix(item: "عنوان رئيسي"),
+                DraggableItemLevelSix(item: "عنوان رئيسي", visible: (answer1 == "عنوان رئيسي" || answer2=="عنوان رئيسي"),),
                 SizedBox(width: 10.w),
-                const DraggableItemLevelSix(item: "مزدوج"),
+                DraggableItemLevelSix(item: "مزدوج", visible: (answer1 == "مزدوج" || answer2 == "مزدوج"),),
               ],
             ),
             SizedBox(
@@ -336,15 +351,15 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const DraggableItemLevelSix(item: "مفرد"),
+                DraggableItemLevelSix(item: "مفرد", visible: (answer1 == "مفرد" || answer2=="مفرد"),),
                 SizedBox(width: 10.w),
-                const DraggableItemLevelSix(item: "فقرة"),
+                DraggableItemLevelSix(item: "فقرة", visible: (answer1 == "فقرة" || answer2=="فقرة"),),
               ],
             ),
             SizedBox(
-              height: 20.h,
+              height: 10.h,
             ),
-            if (finished)
+            if (finished && !widget.game)
               Center(
                 child: ElevatedButton(
                   onPressed: () {
@@ -358,7 +373,7 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
                       primary: Colors.black, minimumSize: Size(80.w, 8.h)),
                   child: Text(
                     "التالي",
-                    style: TextStyle(fontSize: 20.sp),
+                    style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),
                   ),
                 ),
               )
@@ -369,25 +384,34 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
   }
 }
 
-class DraggableItemLevelSix extends StatelessWidget {
+
+class DraggableItemLevelSix extends StatefulWidget {
+  const DraggableItemLevelSix({Key? key, required this.item, required this.visible}) : super(key: key);
   final String item;
+  final bool visible;
+  @override
+  State<DraggableItemLevelSix> createState() => _DraggableItemLevelSixState();
+}
 
-  const DraggableItemLevelSix({super.key, required this.item});
-
+class _DraggableItemLevelSixState extends State<DraggableItemLevelSix> {
   @override
   Widget build(BuildContext context) {
-    return Draggable<String>(
-      data: item,
-      feedback: MatchItemLevelSIx(
-        item: item,
-      ),
-      childWhenDragging: null,
-      child: MatchItemLevelSIx(
-        item: item,
+    return Visibility(
+      visible: !widget.visible,
+      child: Draggable<String>(
+        data: widget.item,
+        feedback: MatchItemLevelSIx(
+          item: widget.item,
+        ),
+        childWhenDragging: null,
+        child: MatchItemLevelSIx(
+          item: widget.item,
+        ),
       ),
     );
   }
 }
+
 
 class MatchItemLevelSIx extends StatelessWidget {
   final String item;
@@ -397,14 +421,17 @@ class MatchItemLevelSIx extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blueGrey,
-      width: 32.w,
-      height: 6.h,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        color: Colors.blueGrey,
+      ),
+      width: 37.w,
+      height: 13.h,
       child: Center(
         child: Text(
           item,
           style: TextStyle(
-              fontSize: 15.sp,
+              fontSize: 19.sp,
               decoration: TextDecoration.none,
               fontWeight: FontWeight.bold,
               color: Colors.white),

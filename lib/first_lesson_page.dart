@@ -7,8 +7,8 @@ import 'package:sizer/sizer.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class LessonOneActivity extends StatefulWidget {
-  const LessonOneActivity({Key? key}) : super(key: key);
-
+  const LessonOneActivity({Key? key, required this.game}) : super(key: key);
+  final bool game;
   @override
   State<LessonOneActivity> createState() => _LessonOneActivityState();
 }
@@ -64,9 +64,9 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
         ),
         title: Row(
           children: [
-            SizedBox(width: 20.w,),
-            const Text("الدرس الأول"),
-            SizedBox(width: 17.w,),
+            SizedBox(width: 23.w,),
+            Text("النشاط", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
+            SizedBox(width: 19.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
@@ -211,7 +211,7 @@ class _LessonOneActivityState extends State<LessonOneActivity> {
             ],
           ),
           SizedBox(height: 6.h),
-          if (finished)
+          if (finished && !widget.game)
             Center(
               child: ElevatedButton(
                 onPressed: () {
@@ -272,8 +272,8 @@ class MatchItem extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(8)),
           color: Colors.blueGrey
       ),
-      width: 29.w,
-      height: 6.h,
+      width: 27.w,
+      height: 8.h,
       child: Center(
           child: Text(
         item,
@@ -315,9 +315,9 @@ class LessonOneStudy extends StatelessWidget {
         ),
         title: Row(
           children: [
-            SizedBox(width: 20.w,),
-            const Text("الدرس الأول"),
-            SizedBox(width: 21.w,),
+            SizedBox(width: 16.w,),
+            Text("الدرس الأول", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
+            SizedBox(width: 11.w,),
             Align(
               alignment: Alignment.centerRight,
               child: IconButton(
@@ -351,7 +351,7 @@ class LessonOneStudy extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const LessonOneActivity()));
+                      builder: (context) => const LessonOneActivity(game: false,)));
             },
             style: ElevatedButton.styleFrom(
                 primary: Colors.black, minimumSize:  Size(80.w, 8.h)),

@@ -23,11 +23,11 @@ class LessonThreeStudy extends StatelessWidget {
         title: Row(
           children: [
             SizedBox(
-              width: 21.w,
-            ),
-            const Text("الدرس الثالث"),
-            SizedBox(
               width: 16.w,
+            ),
+            Text("الدرس الثالث", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
+            SizedBox(
+              width: 12.w,
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -68,7 +68,7 @@ class LessonThreeStudy extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const LessonThreeActivity()));
+                        builder: (context) => const LessonThreeActivity(game: false,)));
               },
               style: ElevatedButton.styleFrom(
                   primary: Colors.black, minimumSize: Size(80.w, 7.h)),
@@ -85,8 +85,8 @@ class LessonThreeStudy extends StatelessWidget {
 }
 
 class LessonThreeActivity extends StatefulWidget {
-  const LessonThreeActivity({Key? key}) : super(key: key);
-
+  const LessonThreeActivity({Key? key, required this.game}) : super(key: key);
+  final bool game;
   @override
   State<LessonThreeActivity> createState() => _LessonThreeActivityState();
 }
@@ -210,11 +210,11 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
         title: Row(
           children: [
             SizedBox(
-              width: 24.w,
+              width: 22.w,
             ),
-            const Text("النشاط"),
+            Text("النشاط", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
             SizedBox(
-              width: 25.w,
+              width: 18.w,
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -402,7 +402,7 @@ class _LessonThreeActivityState extends State<LessonThreeActivity> {
               children: fillRows(),
             ),
             SizedBox(height: 8.h),
-            if (finished)
+            if (finished && !widget.game)
               ElevatedButton(
                 onPressed: () {
                   HomePage.checkLevel(3);
@@ -542,7 +542,10 @@ class AnswerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.green.withOpacity(0.8),
+      decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+        color: Colors.green.withOpacity(0.8),
+      ),
       width: 25.w,
       height: 7.h,
       child: Center(
@@ -551,7 +554,7 @@ class AnswerItem extends StatelessWidget {
         style: TextStyle(
             fontSize: 13.0.sp,
             decoration: TextDecoration.none,
-            color: Colors.white),
+            color: Colors.white,fontWeight: FontWeight.bold),
       )),
     );
   }

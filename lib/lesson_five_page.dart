@@ -58,11 +58,11 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
         title: Row(
           children: [
             SizedBox(
-              width: 21.w,
+              width: 11.w,
             ),
-            const Text("الدرس الخامس"),
+            Text("الدرس الخامس", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
             SizedBox(
-              width: 12.w,
+              width: 11.w,
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -142,7 +142,7 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LessonFiveActivity()));
+                          builder: (context) => const LessonFiveActivity(game: false,)));
                 } else {
                   setState(() {
                     firstPress = true;
@@ -168,8 +168,8 @@ class _LessonFiveStudyState extends State<LessonFiveStudy> {
 }
 
 class LessonFiveActivity extends StatefulWidget {
-  const LessonFiveActivity({Key? key}) : super(key: key);
-
+  const LessonFiveActivity({Key? key, required this.game}) : super(key: key);
+  final bool game;
   @override
   State<LessonFiveActivity> createState() => _LessonFiveActivityState();
 }
@@ -269,9 +269,9 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
             SizedBox(
               width: 21.w,
             ),
-            const Text("النشاط"),
+            Text("النشاط", style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold)),
             SizedBox(
-              width: 28.w,
+              width: 20.w,
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -305,7 +305,7 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
               ),
             ),
             SizedBox(
-              height: 4.h,
+              height: 2.h,
             ),
             Container(
               color: Colors.blue.withOpacity(0.3),
@@ -465,14 +465,14 @@ class _LessonFiveActivityState extends State<LessonFiveActivity> {
               ),
             ),
             SizedBox(
-              height: 4.h,
+              height: 2.h,
             ),
             //AnswerIcons(finished: finished),
             Column(
               children: fillRows(),
             ),
-            SizedBox(height: 5.h),
-            if (finished)
+            SizedBox(height: 2.h),
+            if (finished && !widget.game)
               ElevatedButton(
                 onPressed: () {
                   HomePage.checkLevel(5);

@@ -242,7 +242,7 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "< hr color\n \"blue\" >",
+                        "< h2 color\n \"blue\" >",
                         style: TextStyle(
                             fontSize: 13.sp, fontWeight: FontWeight.w500),
                       ),
@@ -271,7 +271,7 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "      < hr\n color blue>",
+                        "      < h2\n color blue>",
                         style: TextStyle(
                             fontSize: 13.sp, fontWeight: FontWeight.w500),
                       ),
@@ -300,7 +300,7 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "< hr color\n = \"blue\" >",
+                        "< h2 color\n = \"blue\" >",
                         style: TextStyle(
                             fontSize: 13.sp, fontWeight: FontWeight.w500),
                       ),
@@ -329,7 +329,7 @@ class _LessonFourActivityState extends State<LessonFourActivity> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "< hr color\n = blue >",
+                        "< h2 color\n = blue >",
                         style: TextStyle(
                             fontSize: 13.sp, fontWeight: FontWeight.w500),
                       ),

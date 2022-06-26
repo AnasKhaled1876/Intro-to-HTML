@@ -216,8 +216,22 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "اختر من البدائل التي أمامك ما يناسب الفراغات",
+                textAlign: TextAlign.right,
+                textDirection: TextDirection.rtl,
+
+                style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    fontSize: 20.0.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red[900]),
+              ),
+            ),
             SizedBox(
-              height: 3.h,
+              height: 1.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -357,7 +371,7 @@ class _LessonSixActivityState extends State<LessonSixActivity> {
               ],
             ),
             SizedBox(
-              height: 10.h,
+              height: 6.h,
             ),
             if (finished && !widget.game)
               Center(
@@ -426,7 +440,7 @@ class MatchItemLevelSIx extends StatelessWidget {
         color: Colors.blueGrey,
       ),
       width: 37.w,
-      height: 13.h,
+      height: 10.h,
       child: Center(
         child: Text(
           item,

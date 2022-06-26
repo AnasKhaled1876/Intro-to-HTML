@@ -16,12 +16,14 @@ class _ProfilePageState extends State<ProfilePage> {
     for (int i = 6; i > 0; i--) {
       if (i == userLevel) {
         myLevels.add(LevelTile(
-          levelNumber: "$i",checkBoxValue: true,
+          levelNumber: "$i",
+          checkBoxValue: true,
         ));
         continue;
       }
       myLevels.add(LevelTile(
-        levelNumber: "$i",checkBoxValue: false,
+        levelNumber: "$i",
+        checkBoxValue: false,
       ));
     }
     return myLevels;
@@ -41,6 +43,12 @@ class _ProfilePageState extends State<ProfilePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Container(
+            child: Image.asset("assets/profilepic.jpg"),
+            height: 20.h,
+            width: 60.w,
+          ),
+          SizedBox(height: 7.h,),
           ListTile(
             leading: StringBar(
               myText: HomePage.prefs.getString("name"),
@@ -70,7 +78,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               Text(
                 "مستوى التقدم",
-                style: TextStyle(fontSize: 22.sp,fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -95,10 +103,12 @@ class _ProfilePageState extends State<ProfilePage> {
 class LevelTile extends StatelessWidget {
   const LevelTile({
     Key? key,
-    required this.levelNumber, required this.checkBoxValue,
+    required this.levelNumber,
+    required this.checkBoxValue,
   }) : super(key: key);
   final String levelNumber;
-  final bool  checkBoxValue;
+  final bool checkBoxValue;
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -106,7 +116,7 @@ class LevelTile extends StatelessWidget {
         levelNumber,
         style: TextStyle(fontSize: 25.sp),
       ),
-      title:  Checkbox(
+      title: Checkbox(
         onChanged: null,
         value: checkBoxValue,
         shape: const CircleBorder(),
